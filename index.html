@@ -65,6 +65,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-base10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/03/base10/" class="article-date">
+  <time datetime="2018-04-03T09:24:32.000Z" itemprop="datePublished">2018-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/03/base10/">base10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定二进制字符串，将其换算成对应的十进制数字</p>
+<h2 id="我的笨方案"><a href="#我的笨方案" class="headerlink" title="我的笨方案"></a>我的笨方案</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">base10</span><span class="params">(str)</span> &#123;</span></div><div class="line">  var res = <span class="number">0</span>;</div><div class="line">            var tmp = <span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span>(var <span class="built_in">i</span>=str.<span class="built_in">length</span><span class="number">-1</span>;<span class="built_in">i</span>&gt;=<span class="number">0</span>;<span class="built_in">i</span>--)&#123;</div><div class="line">                res += str[i]*tmp;</div><div class="line">                tmp *= <span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="更简洁的方案"><a href="#更简洁的方案" class="headerlink" title="更简洁的方案"></a>更简洁的方案</h2><p>直接使用parseInt函数,将字符串转换为十进制的整数，需要在后面指定当前字符串为几进制，不指定默认为10<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">function</span> <span class="title">base10</span>(str) &#123;</div><div class="line">   <span class="keyword">return</span> <span class="type">parseInt(str,2)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjfjgo92k00035cppvw3vc0jd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Judge-the-nth-bite-of-a-num" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/03/Judge-the-nth-bite-of-a-num/" class="article-date">
@@ -95,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjfjfb8g90000bkppxpal1110" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjfjgo92700005cpp8xp4pnwt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjfjfb8gg0001bkppaqondh1a" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjfjgo92i00025cppp6eovcxh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/love-coding/">love coding</a></li></ul>
@@ -179,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello-world/" data-id="cjfjfb8gi0002bkppva3g8a61" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello-world/" data-id="cjfjgo92f00015cppacrnac2g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,6 +270,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/03/base10/">base10</a>
+          </li>
         
           <li>
             <a href="/2018/04/03/Judge-the-nth-bite-of-a-num/">Judge the nth bite of a num</a>

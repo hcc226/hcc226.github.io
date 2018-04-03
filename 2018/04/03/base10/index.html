@@ -3,20 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>爱生活，爱编程 | hcc226</title>
+  <title>base10 | hcc226</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生活终于在研二走上了正轨。">
-<meta name="keywords" content="love coding">
+  <meta name="description" content="问题描述给定二进制字符串，将其换算成对应的十进制数字 我的笨方案123456789  function base10(str) &amp;#123;  var res = 0;            var tmp = 1;            for(var i=str.length-1;i&amp;gt;=0;i--)&amp;#123;                res += str[i]*tmp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爱生活，爱编程">
-<meta property="og:url" content="https://hcc226.github.io/2017/11/02/hello/index.html">
+<meta property="og:title" content="base10">
+<meta property="og:url" content="https://hcc226.github.io/2018/04/03/base10/index.html">
 <meta property="og:site_name" content="hcc226">
-<meta property="og:description" content="生活终于在研二走上了正轨。">
+<meta property="og:description" content="问题描述给定二进制字符串，将其换算成对应的十进制数字 我的笨方案123456789  function base10(str) &amp;#123;  var res = 0;            var tmp = 1;            for(var i=str.length-1;i&amp;gt;=0;i--)&amp;#123;                res += str[i]*tmp;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-02T12:59:37.693Z">
+<meta property="og:updated_time" content="2018-04-03T09:28:26.531Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爱生活，爱编程">
-<meta name="twitter:description" content="生活终于在研二走上了正轨。">
+<meta name="twitter:title" content="base10">
+<meta name="twitter:description" content="问题描述给定二进制字符串，将其换算成对应的十进制数字 我的笨方案123456789  function base10(str) &amp;#123;  var res = 0;            var tmp = 1;            for(var i=str.length-1;i&amp;gt;=0;i--)&amp;#123;                res += str[i]*tmp;">
   
     <link rel="alternate" href="/atom.xml" title="hcc226" type="application/atom+xml">
   
@@ -65,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-base10" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/02/hello/" class="article-date">
-  <time datetime="2017-11-02T10:00:13.000Z" itemprop="datePublished">2017-11-02</time>
+    <a href="/2018/04/03/base10/" class="article-date">
+  <time datetime="2018-04-03T09:24:32.000Z" itemprop="datePublished">2018-04-03</time>
 </a>
     
   </div>
@@ -79,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      爱生活，爱编程
+      base10
     </h1>
   
 
@@ -87,35 +86,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>生活终于在研二走上了正轨。</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定二进制字符串，将其换算成对应的十进制数字</p>
+<h2 id="我的笨方案"><a href="#我的笨方案" class="headerlink" title="我的笨方案"></a>我的笨方案</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">base10</span><span class="params">(str)</span> &#123;</span></div><div class="line">  var res = <span class="number">0</span>;</div><div class="line">            var tmp = <span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span>(var <span class="built_in">i</span>=str.<span class="built_in">length</span><span class="number">-1</span>;<span class="built_in">i</span>&gt;=<span class="number">0</span>;<span class="built_in">i</span>--)&#123;</div><div class="line">                res += str[i]*tmp;</div><div class="line">                tmp *= <span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="更简洁的方案"><a href="#更简洁的方案" class="headerlink" title="更简洁的方案"></a>更简洁的方案</h2><p>直接使用parseInt函数,将字符串转换为十进制的整数，需要在后面指定当前字符串为几进制，不指定默认为10<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">function</span> <span class="title">base10</span>(str) &#123;</div><div class="line">   <span class="keyword">return</span> <span class="type">parseInt(str,2)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjfjgo92i00025cppp6eovcxh" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjfjgo92k00035cppvw3vc0jd" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/love-coding/">love coding</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/04/03/Judge-the-nth-bite-of-a-num/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Judge the nth bite of a num
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/03/Judge-the-nth-bite-of-a-num/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Judge the nth bite of a num</div>
     </a>
   
 </nav>
