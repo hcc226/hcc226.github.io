@@ -65,6 +65,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-RegExp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/26/RegExp/" class="article-date">
+  <time datetime="2018-04-26T03:25:42.000Z" itemprop="datePublished">2018-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/26/RegExp/">RegExp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="定义正则"><a href="#定义正则" class="headerlink" title="定义正则"></a>定义正则</h3><p> 1 var re = new RegExp(“a”,flags);<br> 2 var re = /a/flags;<br> flags取值：<br> g:全局模式 即模式将被应用于所有字符串中，而非在发现第一个匹配项时立即停止<br> i:表示不区分大小写<br> m:表示多行模式 即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项</p>
+<h3 id="正则的常用方法"><a href="#正则的常用方法" class="headerlink" title="正则的常用方法"></a>正则的常用方法</h3><h4 id="test-在字符串中查找符合正则的内容，查找到返回true，否则false"><a href="#test-在字符串中查找符合正则的内容，查找到返回true，否则false" class="headerlink" title="test() 在字符串中查找符合正则的内容，查找到返回true，否则false"></a>test() 在字符串中查找符合正则的内容，查找到返回true，否则false</h4><h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>   正则.test(字符串)</p>
+<h4 id="exec-搜索符合规则的内容，返回数组和对象？？"><a href="#exec-搜索符合规则的内容，返回数组和对象？？" class="headerlink" title="exec() 搜索符合规则的内容，返回数组和对象？？"></a>exec() 搜索符合规则的内容，返回数组和对象？？</h4><h5 id="用法-1"><a href="#用法-1" class="headerlink" title="用法:"></a>用法:</h5><p> 正则.exec(字符串) 调用一次为匹配一次，全局匹配需多次调用<br> 返回结果为数组包括匹配的字符串 以及子项以及input index属性<br> .index匹配到字符串的位置<br> .input匹配成功的字符串</p>
+<h4 id="search-在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1"><a href="#search-在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1" class="headerlink" title="search() 在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1"></a>search() 在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1</h4><h5 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h5><p> 字符串.search(正则)</p>
+<h4 id="match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null"><a href="#match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null" class="headerlink" title="match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null"></a>match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null</h4><h5 id="用法：-1"><a href="#用法：-1" class="headerlink" title="用法："></a>用法：</h5><p> 字符串.match(正则)</p>
+<h4 id="replace-查找符合正则的字符串-就替换为相应的字符串，返回替换后的内容"><a href="#replace-查找符合正则的字符串-就替换为相应的字符串，返回替换后的内容" class="headerlink" title="replace() 查找符合正则的字符串 就替换为相应的字符串，返回替换后的内容"></a>replace() 查找符合正则的字符串 就替换为相应的字符串，返回替换后的内容</h4><h5 id="用法-2"><a href="#用法-2" class="headerlink" title="用法"></a>用法</h5><p> 字符串.repalce(正则，新的字符串/回调函数)在回调函数中，第一个参数指的是每次匹配成功的字符</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cjgg0m0gq000028ppprd2xfuy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-flex" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/25/flex/" class="article-date">
@@ -94,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjgevlzpf00028cpptlng2lhm" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjgg0m0gx000128ppjw2a793c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjgevlzpc00018cppf1k95th9" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjgg0m0h3000428ppqzzbmnxp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjgevlzp400008cppvxknnzpk" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjgg0m0h7000628pp59prurtm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjgevlzpj00048cppe4ybk6wu" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjgg0m0h1000328ppj105k1xg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/love-coding/">love coding</a></li></ul>
@@ -257,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello-world/" data-id="cjgevlzph00038cpp6fmazakw" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello-world/" data-id="cjgg0m0h0000228ppruuljdya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,6 +353,10 @@
       <ul>
         
           <li>
+            <a href="/2018/04/26/RegExp/">RegExp</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/25/flex/">flex</a>
           </li>
         
@@ -324,10 +370,6 @@
         
           <li>
             <a href="/2017/11/02/hello/">爱生活，爱编程</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/02/hello-world/">Hello World</a>
           </li>
         
       </ul>
