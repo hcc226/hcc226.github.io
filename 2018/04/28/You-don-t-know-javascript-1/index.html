@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hcc226">
 <meta property="og:description" content="chapter One 作用域LHS 为其赋值RHS 使用该变量LHS时，如果找不到该变量，则会创建新的全局变量严格模式下禁止此行为，会抛出ReferrenceError chapter Two 词法作用域eval 改变作用域with 将一个对象的引用当做作用域来处理123456789101112131415161718192021222324function foo(obj)&amp;#123;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-28T09:55:41.074Z">
+<meta property="og:updated_time" content="2018-04-28T10:03:52.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="You don&#39;t know javascript(1)">
 <meta name="twitter:description" content="chapter One 作用域LHS 为其赋值RHS 使用该变量LHS时，如果找不到该变量，则会创建新的全局变量严格模式下禁止此行为，会抛出ReferrenceError chapter Two 词法作用域eval 改变作用域with 将一个对象的引用当做作用域来处理123456789101112131415161718192021222324function foo(obj)&amp;#123;">
@@ -95,12 +95,12 @@
 <p>let<br>const也是块级元素,在外部无法访问<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span>(foo)&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="keyword">const</span> b = <span class="number">3</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a)<span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(b)<span class="comment">// ReferenceError not defined</span></div></pre></td></tr></table></figure></p>
 <h2 id="chapter-Four-提升"><a href="#chapter-Four-提升" class="headerlink" title="chapter Four 提升"></a>chapter Four 提升</h2><p>包括变量和函数在内的所有声明（函数声明会被提升，函数表达式不会）都会在任何代码被执行前首先被处理。<br>var a = 2;将被分为 var a,和a = 2,var a 会被提升，在编译阶段进行，第二个赋值声明留在原地等待执行阶段。<br>各变量在各自的作用域内进行提升。<br>函数比变量优先提升<br>重复的函数声明会被覆盖</p>
 <h3 id="在一个普通块内部的函数声明通常会被提升到作用域的顶部"><a href="#在一个普通块内部的函数声明通常会被提升到作用域的顶部" class="headerlink" title="在一个普通块内部的函数声明通常会被提升到作用域的顶部"></a>在一个普通块内部的函数声明通常会被提升到作用域的顶部</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">foo();<span class="comment">//TypeError foo is not a function</span></div><div class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span>(a)&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"a"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"b"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="chapter-Five-作用域闭包"><a href="#chapter-Five-作用域闭包" class="headerlink" title="chapter Five 作用域闭包"></a>chapter Five 作用域闭包</h2><p>当函数可以记住并访问所在的词法作用域时，就产生的闭包，即使函数是在当前词法作用域之外执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();<span class="comment">//2</span></div></pre></td></tr></table></figure><br>bar拥有foo内部作用域的闭包，使得foo作用域调用之后不会被回收而一直存活，以共bar之后任何时间使用。<br>bar依然蚩尤对该作用域的引用，这个引用就叫做闭包。</p>
+<h2 id="chapter-Five-作用域闭包"><a href="#chapter-Five-作用域闭包" class="headerlink" title="chapter Five 作用域闭包"></a>chapter Five 作用域闭包</h2><p>当函数可以记住并访问所在的词法作用域时，就产生的闭包，即使函数是在当前词法作用域之外执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();<span class="comment">//2</span></div></pre></td></tr></table></figure><br>bar拥有foo内部作用域的闭包，使得foo作用域调用之后不会被回收而一直存活，以共bar之后任何时间使用。<br>bar依然持有对该作用域的引用，这个引用就叫做闭包。<br>无论通过何种方式将内部函数传递到所在的词法作用域以外，都会蚩尤对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjgj7ksut0001lkppnx757luu" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjgp4kfl30003espp60ryayd5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,6 +108,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/05/02/vue-component-communication/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue-component-communication
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/26/RegExp/" id="article-nav-older" class="article-nav-link-wrap">
@@ -150,7 +159,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -161,6 +170,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/05/02/vue-component-communication/">vue-component-communication</a>
+          </li>
         
           <li>
             <a href="/2018/04/28/You-don-t-know-javascript-1/">You don&#39;t know javascript(1)</a>
@@ -176,10 +189,6 @@
         
           <li>
             <a href="/2018/04/03/base10/">base10</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/03/Judge-the-nth-bite-of-a-num/">Judge the nth bite of a num</a>
           </li>
         
       </ul>
