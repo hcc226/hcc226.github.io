@@ -65,6 +65,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-canvas宽高" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/canvas宽高/" class="article-date">
+  <time datetime="2018-05-29T01:10:04.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/canvas宽高/">canvas宽高</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于HTML5中Canvas的宽、高设置问题<br>Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：<br>方法一：<br>       <canvas width="500" height="500"></canvas><br>方法二：使用HTML5 Canvas API操作 OK<br>       var canvas = document.getElementById(‘欲操作canvas的id’);<br>       canvas.width = 500;<br>       canvas.width = 500;<br>若通过如下方法设置宽高，那么Canvas元素将由原来大小被拉伸到所设置的宽高：<br>方法一：使用CSS 会被拉伸</p>
+<pre><code>#欲操作canvas的id｛
+     width:1000px;
+     height:1000px;
+｝
+</code></pre><p>方法二：使用HTML5 Canvas API操作 会被拉伸<br>      var canvas = document.getElementById(‘欲操作canvas的id’);<br>      canvas.style.width = “1000px”;<br>      canvas.style.height = “1000px”;<br>方法三 ：用jquery的$(“#id”).width(500);会被拉伸<br>其它：canvas的width和height也不能用百分比表示。canvas会将百分值当成数值显示</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjhr0pxy40004v4ppxuz12hla" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-flex-应用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/10/flex-应用/" class="article-date">
@@ -101,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjhfxna080002kcppv940aapb" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjhr0pxy50005v4ppsa8s4gse" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjhfxna14000akcppb1svrccx" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjhr0pxy80008v4pp38i56s96" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjhfxna0h0007kcppbxqbx1qq" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjhr0pxy10002v4pp70dkbfk8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cjhfxn9zy0000kcppof0u1p6g" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cjhr0pxxz0001v4pp6mykr42y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjhfxna0t0009kcppwshmb098" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjhr0pxy70007v4pplbp6aemy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjhfxna060001kcppev4c17e1" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjhr0pxy30003v4ppqdla9dwv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -352,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjhfxna0b0004kcpppgq7lo7h" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjhr0pxxs0000v4ppoigqwyhx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -389,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjhfxna0a0003kcppeodrqomu" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjhr0pxy90009v4pptakz493x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/love-coding/">love coding</a></li></ul>
@@ -436,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello-world/" data-id="cjhfxna0f0006kcpp9t06kz6i" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello-world/" data-id="cjhr0pxy60006v4ppfv3ijs6d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -490,6 +532,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/29/canvas宽高/">canvas宽高</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/10/flex-应用/">flex 应用</a>
           </li>
         
@@ -503,10 +549,6 @@
         
           <li>
             <a href="/2018/04/26/RegExp/">RegExp</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/25/flex/">flex</a>
           </li>
         
       </ul>
