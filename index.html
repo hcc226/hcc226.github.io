@@ -65,6 +65,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-canvas性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/canvas性能优化/" class="article-date">
+  <time datetime="2018-05-29T02:37:54.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/canvas性能优化/">canvas性能优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.将渲染阶段的开销转嫁到计算阶段之上<br>2.使用多个分层的canvas绘制复杂场景<br>3.避免频繁设置绘制上下文的font属性 如linewidth等，调整绘制顺序，linewidth一致的放在一起绘制.<br>因为设置linewidth,font,shadow,text,fillstyle这些属性花费的时间较多<br>4.不在动画中使用putImageData方法。这种操作导致性能下降<br>5.通过计算和判断，避免视野之外元素的绘制。<br>6.离屏绘制。将固定的内容预先绘制在离屏canvas上以提高性能。例如，将待绘制的内容先裁剪好，保存起来。<br>先将对象绘制在一个未插入页面的canvas中，然后每一帧使用这个canvas绘制。<br>7.使用worker和拆分任务的方法避免复杂算法阻塞动画运行。避免渲染一帧的时间超过16ms</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjhr3c0xb00060gppji7x5c9o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-canvas宽高" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/29/canvas宽高/" class="article-date">
@@ -98,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjhr0pxy40004v4ppxuz12hla" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjhr3c0x700040gppqtm4rs0i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjhr0pxy50005v4ppsa8s4gse" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjhr3c0x900050gppqbbwyq9r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjhr0pxy80008v4pp38i56s96" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjhr3c0xd00070gpp93ol3x4z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjhr0pxy10002v4pp70dkbfk8" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjhr3c0x500030gppz98he0zv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cjhr0pxxz0001v4pp6mykr42y" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cjhr3c0x000010gppl7ttcc9h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjhr0pxy70007v4pplbp6aemy" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjhr3c0xi00090gppzqit9ieo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjhr0pxy30003v4ppqdla9dwv" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjhr3c0x300020gppnddj2ve8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -395,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjhr0pxxs0000v4ppoigqwyhx" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjhr3c0w500000gppyyv8x2pu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjhr0pxy90009v4pptakz493x" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjhr3c0xk000a0gppd4yp1896" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/love-coding/">love coding</a></li></ul>
@@ -444,52 +481,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/02/hello-world/" class="article-date">
-  <time datetime="2017-11-02T09:41:01.798Z" itemprop="datePublished">2017-11-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello-world/" data-id="cjhr0pxy60006v4ppfv3ijs6d" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -533,6 +529,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/29/canvas性能优化/">canvas性能优化</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/29/canvas宽高/">canvas宽高</a>
           </li>
         
@@ -546,10 +546,6 @@
         
           <li>
             <a href="/2018/04/28/You-don-t-know-javascript-1/">You don&#39;t know javascript(1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/26/RegExp/">RegExp</a>
           </li>
         
       </ul>
