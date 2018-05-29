@@ -5,17 +5,17 @@
   
   <title>canvas宽高 | hcc226</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于HTML5中Canvas的宽、高设置问题Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：方法一：       方法二：使用HTML5 Canvas API操作 OK       var canvas = document.getElementById(‘欲操作canvas的id’);       canvas.width = 500;">
+  <meta name="description" content="关于HTML5中Canvas的宽、高设置问题Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：方法一： &amp;lt;canvas width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; 方法二：使用HTML5 Canvas API操作 OK       var canvas = do">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas宽高">
 <meta property="og:url" content="https://hcc226.github.io/2018/05/29/canvas宽高/index.html">
 <meta property="og:site_name" content="hcc226">
-<meta property="og:description" content="关于HTML5中Canvas的宽、高设置问题Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：方法一：       方法二：使用HTML5 Canvas API操作 OK       var canvas = document.getElementById(‘欲操作canvas的id’);       canvas.width = 500;">
+<meta property="og:description" content="关于HTML5中Canvas的宽、高设置问题Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：方法一： &amp;lt;canvas width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; 方法二：使用HTML5 Canvas API操作 OK       var canvas = do">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-29T01:43:22.264Z">
+<meta property="og:updated_time" content="2018-05-29T01:44:56.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas宽高">
-<meta name="twitter:description" content="关于HTML5中Canvas的宽、高设置问题Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：方法一：       方法二：使用HTML5 Canvas API操作 OK       var canvas = document.getElementById(‘欲操作canvas的id’);       canvas.width = 500;">
+<meta name="twitter:description" content="关于HTML5中Canvas的宽、高设置问题Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：方法一： &amp;lt;canvas width=&amp;quot;500&amp;quot; height=&amp;quot;500&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; 方法二：使用HTML5 Canvas API操作 OK       var canvas = do">
   
     <link rel="alternate" href="/atom.xml" title="hcc226" type="application/atom+xml">
   
@@ -86,7 +86,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于HTML5中Canvas的宽、高设置问题<br>Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：<br>方法一：<br>       <canvas width="500" height="500"></canvas><br>方法二：使用HTML5 Canvas API操作 OK<br>       var canvas = document.getElementById(‘欲操作canvas的id’);<br>       canvas.width = 500;<br>       canvas.width = 500;<br>若通过如下方法设置宽高，那么Canvas元素将由原来大小被拉伸到所设置的宽高：<br>方法一：使用CSS 会被拉伸</p>
+        <p>关于HTML5中Canvas的宽、高设置问题<br>Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：<br>方法一：</p>
+<pre><code>&lt;canvas width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;
+</code></pre><p>方法二：使用HTML5 Canvas API操作 OK<br>       var canvas = document.getElementById(‘欲操作canvas的id’);<br>       canvas.width = 500;<br>       canvas.width = 500;<br>若通过如下方法设置宽高，那么Canvas元素将由原来大小被拉伸到所设置的宽高：<br>方法一：使用CSS 会被拉伸</p>
 <pre><code>#欲操作canvas的id｛
      width:1000px;
      height:1000px;
