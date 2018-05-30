@@ -65,6 +65,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/30/Promise/" class="article-date">
+  <time datetime="2018-05-30T05:43:21.000Z" itemprop="datePublished">2018-05-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/30/Promise/">Promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p> MDN定义<br> 1 Promise对象用作异步计算<br> 2 一个Promise代表一个现在、将来或者永不可能可用的值<br> 3 可将异步操作队列化，使其按照期望的额顺序执行，并返回符合预期的结果<br> 4 可在对象直接传递和操作promise,帮助我们处理队列</p>
+<h2 id="Why-Promise"><a href="#Why-Promise" class="headerlink" title="Why Promise"></a>Why Promise</h2><p>异步操作常见语法<br> 1 事件侦听与响应 addEventListener<br> 2 回调 如ajax</p>
+<p>###<br> 1 回调地狱，调试不方便，不好维护<br> 2 无法使用 try catch错误处理机制 throw return<br> 3 无法正常检索堆栈信息，每一次回调都是在系统层面的调用<br> 4 多个回调函数之前难以建立联系</p>
+<h2 id="Promise详解"><a href="#Promise详解" class="headerlink" title="Promise详解"></a>Promise详解</h2><p>new Promise(function(resove,reject){<br>    //执行器函数<br>    //一段耗时很长的异步操作<br>    resolve();//数据处理完成<br>    reject();//数据处理出错<br>    //resolve reject会改变promise实例的状态，如果数据处理完成则调用then的第一个函数，出错则会调用then()的第二个响应函数<br>}).then(function(A){<br>    //成功 下一步<br>},function(){<br>    //失败<br>})</p>
+<p>Promise三个状态<br>pending 初始状态<br>fulfilled 成功<br>rejected 失败<br>promise状态发生改变就会触发then promise状态一经改变不会发生改变</p>
+<p>注意：如果在then中不直接返回promise实例对象，将会执行下一步操作，即使返回值为false，false将会作为返回值传递到相应的then函数中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"go!"</span>)</div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      resolve(<span class="string">'hello'</span>)</div><div class="line">&#125;,<span class="number">2000</span>)</div><div class="line">&#125;)</div><div class="line">.then(<span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">   (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">        resolve(<span class="string">'world'</span>)</div><div class="line">           <span class="built_in">console</span>.log(<span class="string">"merrry"</span>)</div><div class="line">    &#125;,<span class="number">2000</span>)</div><div class="line">    &#125;)</div><div class="line">    &#125;());</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="params">a</span>=&gt;</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a+<span class="string">"yes"</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">//go!</span></div><div class="line"><span class="comment">//hello</span></div><div class="line"><span class="comment">//falseyes</span></div><div class="line"><span class="comment">//merrry 间隔2s</span></div></pre></td></tr></table></figure></p>
+<h2 id="then"><a href="#then" class="headerlink" title="then()"></a>then()</h2><p>接收两个函数作为参数分别代表 fulfilled rejected<br>then()可以返回一个新的promise实例，所以可以链式调用<br>当前面的promise状态改变时，then()根据其最终状，选择响应函数执行。</p>
+<p>状态响应函数可以返回新的promise或者其他值<br>如果返回新的promise 那么下一级.then()会在新的promise状态改变之后执行<br>如果返回其他任何值，则会立即执行下一级then()</p>
+<p>then()里面有then(),则外面的then会等里面的then()全部执行完才执行<br>then()如果参数不符合规范则会被忽略，执行后面的步骤</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>promise会自动捕获内部异常，并交给reject执行</p>
+<p>两种方法：<br>1 reject(‘error’) .then(null,message=&gt;{})<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</div><div class="line">    reject(<span class="string">'errr'</span>)</div><div class="line">&#125;)</div><div class="line">.then(<span class="literal">null</span>,<span class="function"><span class="params">message</span>=&gt;</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(message)</div><div class="line">&#125;)</div></pre></td></tr></table></figure><br>2 throw new Error(‘error’) .catch(message=&gt;{})</p>
+<p>catch()也会产生一个promise实例<br>catch()可以与then()连用<br>建议在最后都加一个catch操作以便处理错误。</p>
+<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><p>接收一个数组，返回一个新的promise，数组里可以是promise对象，也可以是别的值，只有promise会等待状态改变<br>当所有子promise都完成，返回值是全部promise返回值的组成的数组<br>当有任何一个结果失败，则该promise失败，返回值是第一个失败的子promise的结果</p>
+<h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h2><p>接收一个数组，当任一个promise完成则状态改变</p>
+<h3 id="Promise一旦创建立刻执行"><a href="#Promise一旦创建立刻执行" class="headerlink" title="Promise一旦创建立刻执行"></a>Promise一旦创建立刻执行</h3><h2 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a>Promise.resolve()</h2><p>1 参数为空，返回一个状态为fulfilled的promise实例<br>2 参数是一个跟promise无关的值，则同上，但是fulfilled函数为接收到这个参数<br>3 若参数为promise实例，则返回该实例，不做任何修改。<br>4 若参数为thenable则立即执行</p>
+<h2 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject"></a>Promise.reject</h2><p>类似Promise.resolve返回一个状态为rejected的promise实例</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjhsxv2o00001fgpp8jcdz1gr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-canvas性能优化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/29/canvas性能优化/" class="article-date">
@@ -92,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjhr3c0xb00060gppji7x5c9o" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjhsxv2o70006fgpph43a2bp7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjhr3c0x700040gppqtm4rs0i" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjhsxv2o60005fgppissfp7kl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjhr3c0x900050gppqbbwyq9r" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjhsxv2ok0007fgppvruc28kt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -226,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjhr3c0xd00070gpp93ol3x4z" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjhsxv2ol0008fgppj5sdi226" class="article-share-link">Share</a>
       
       
     </footer>
@@ -272,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjhr3c0x500030gppz98he0zv" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjhsxv2o30003fgpp2jatsjsn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -314,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cjhr3c0x000010gppl7ttcc9h" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cjhsxv2o20002fgpp2mgqyc6x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjhr3c0xi00090gppzqit9ieo" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cjhsxv2oq000bfgppqrwvotzp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -392,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjhr3c0x300020gppnddj2ve8" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cjhsxv2o40004fgppcqg81lcq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,48 +484,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjhr3c0w500000gppyyv8x2pu" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="cjhsxv2nt0000fgpp42qwk4og" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/02/hello/" class="article-date">
-  <time datetime="2017-11-02T10:00:13.000Z" itemprop="datePublished">2017-11-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/02/hello/">爱生活，爱编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>生活终于在研二走上了正轨。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="cjhr3c0xk000a0gppd4yp1896" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/love-coding/">love coding</a></li></ul>
-
     </footer>
   </div>
   
@@ -529,6 +542,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/30/Promise/">Promise</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/29/canvas性能优化/">canvas性能优化</a>
           </li>
         
@@ -542,10 +559,6 @@
         
           <li>
             <a href="/2018/05/02/vue-component-communication/">vue-component-communication</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/28/You-don-t-know-javascript-1/">You don&#39;t know javascript(1)</a>
           </li>
         
       </ul>
