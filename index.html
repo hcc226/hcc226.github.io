@@ -65,6 +65,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Leetcode53-Maximum-Subarray" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/07/Leetcode53-Maximum-Subarray/" class="article-date">
+  <time datetime="2018-06-07T09:25:41.000Z" itemprop="datePublished">2018-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个整数数组，找到连续序列和最大的子序列（至少包括一个数字）<br>Example:<br>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> maxSubArray = function(nums) &#123;</div><div class="line">    <span class="built_in">var</span> cur = nums[<span class="number">0</span>];</div><div class="line">    <span class="built_in">var</span> <span class="built_in">sum</span> = nums[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="built_in">var</span> i = <span class="number">1</span>;i&lt;nums.<span class="built_in">length</span>;i++)&#123;</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span> + nums[i];</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span>&gt;nums[i]?<span class="built_in">sum</span>:nums[i];</div><div class="line">        cur = <span class="built_in">sum</span>&gt;cur?<span class="built_in">sum</span>:cur;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> cur;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="关键思路之Kadane-Algorithm（子序列可以为空）"><a href="#关键思路之Kadane-Algorithm（子序列可以为空）" class="headerlink" title="关键思路之Kadane Algorithm（子序列可以为空）"></a>关键思路之Kadane Algorithm（子序列可以为空）</h2><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//Kadane Algorithm</div><div class="line"><span class="built_in">var</span> maxSubArray = function(nums) &#123;</div><div class="line">    <span class="built_in">var</span> cur = <span class="number">0</span>;</div><div class="line">    <span class="built_in">var</span> <span class="built_in">sum</span> = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="built_in">var</span> i = <span class="number">0</span>;i&lt;nums.<span class="built_in">length</span>;i++)&#123;</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span> + nums[i];</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span>&gt;<span class="number">0</span>?<span class="built_in">sum</span>:<span class="number">0</span>;</div><div class="line">        cur = <span class="built_in">sum</span>&gt;cur?<span class="built_in">sum</span>:cur;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> cur;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>1.遍历数组，在遍历过程中，将遍历到的元素累加，当累加结果小于或等于0时，从下一个元素开始，重新开始累积<br>2.累加过程中，用一个变量记录cur当前最大值<br>3.一次遍历后,cur即为最大子片段的和值<br>注意：题目隐含设定是最大子片段可以为空，空片段的和值是0.<br>理解此算法的关键：<br>1.最大子片段中不可能包含求和值为负的前缀。因此当计算出一个负值时，要从当前值重新算起。<br>2.另一关键是所有出现过的最大值都会被记录</p>
+<h2 id="本题关键"><a href="#本题关键" class="headerlink" title="本题关键"></a>本题关键</h2><p>1.子序列至少包含一个元素，与Kadane Algorithm不同<br>2.最大值可能为负，因此sum初始值不为0，sum应与当前元素大小比较，而非0</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cji4d2ajy00012oppxcc00rys" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-url匹配及repalce方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/04/url匹配及repalce方法/" class="article-date">
@@ -101,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cji1mggk9000aicpp0qi5o03y" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cji4d2ake000b2oppxw7p6j4u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cji1mggjz0003icpp496kxzgh" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cji4d2ak300032oppls68q90k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cji1mggk10004icppq859pfn9" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cji4d2ak800062opp1wthobys" class="article-share-link">Share</a>
       
       
     </footer>
@@ -233,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cji1mggk50007icppc3kocagx" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cji4d2ak900072opp52b8debf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cji1mggk30006icpp0e53je6e" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cji4d2aka00082oppws30v8pe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cji1mggka000bicppjzuehohn" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cji4d2akj000d2oppy3hxawg1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -370,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cji1mggk20005icpppe2p1bxw" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cji4d2ak500042oppbl576evj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -412,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cji1mggju0001icppxlvui9n7" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="cji4d2ak100022oppk075keln" class="article-share-link">Share</a>
       
       
     </footer>
@@ -451,46 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cji1mggk60008icpp12rohst6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-base10" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/03/base10/" class="article-date">
-  <time datetime="2018-04-03T09:24:32.000Z" itemprop="datePublished">2018-04-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/03/base10/">base10</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定二进制字符串，将其换算成对应的十进制数字</p>
-<h2 id="我的笨方案"><a href="#我的笨方案" class="headerlink" title="我的笨方案"></a>我的笨方案</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">base10</span><span class="params">(str)</span> &#123;</span></div><div class="line">  var res = <span class="number">0</span>;</div><div class="line">            var tmp = <span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span>(var <span class="built_in">i</span>=str.<span class="built_in">length</span><span class="number">-1</span>;<span class="built_in">i</span>&gt;=<span class="number">0</span>;<span class="built_in">i</span>--)&#123;</div><div class="line">                res += str[i]*tmp;</div><div class="line">                tmp *= <span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="更简洁的方案"><a href="#更简洁的方案" class="headerlink" title="更简洁的方案"></a>更简洁的方案</h2><p>直接使用parseInt函数,将字符串转换为十进制的整数，需要在后面指定当前字符串为几进制，不指定默认为10<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">function</span> <span class="title">base10</span>(str) &#123;</div><div class="line">   <span class="keyword">return</span> <span class="type">parseInt(str,2)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="cji1mggjy0002icpplv5ho72a" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="cji4d2akv000f2oppvnpjy16u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -548,6 +550,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/04/url匹配及repalce方法/">url匹配及repalce方法</a>
           </li>
         
@@ -561,10 +567,6 @@
         
           <li>
             <a href="/2018/05/29/canvas宽高/">canvas宽高</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/10/flex-应用/">flex 应用</a>
           </li>
         
       </ul>
