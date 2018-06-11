@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>canvas性能优化 | hcc226</title>
+  <title>dom节点查找 | hcc226</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.将渲染阶段的开销转嫁到计算阶段之上2.使用多个分层的canvas绘制复杂场景3.避免频繁设置绘制上下文的font属性 如linewidth等，调整绘制顺序，linewidth一致的放在一起绘制.因为设置linewidth,font,shadow,text,fillstyle这些属性花费的时间较多4.不在动画中使用putImageData方法。这种操作导致性能下降5.通过计算和判断，避免视野之外">
+  <meta name="description" content="问题描述查找两个节点的最近的一个共同父节点，可以包括节点自身 解题思路jquery contains方法可以判断一个几个节点元素是否包含另一个节点元素取任意一个节点1，依次往前取父节点，若这个父节点包含另外一个节点2，则此父节点则为满足要求的节点。注意：节点本身是包含本身的即node1.contains(node1)为true1234567function commonParentNode(oNo">
+<meta name="keywords" content="jquery">
 <meta property="og:type" content="article">
-<meta property="og:title" content="canvas性能优化">
-<meta property="og:url" content="https://hcc226.github.io/2018/05/29/canvas性能优化/index.html">
+<meta property="og:title" content="dom节点查找">
+<meta property="og:url" content="https://hcc226.github.io/2018/06/11/dom节点查找/index.html">
 <meta property="og:site_name" content="hcc226">
-<meta property="og:description" content="1.将渲染阶段的开销转嫁到计算阶段之上2.使用多个分层的canvas绘制复杂场景3.避免频繁设置绘制上下文的font属性 如linewidth等，调整绘制顺序，linewidth一致的放在一起绘制.因为设置linewidth,font,shadow,text,fillstyle这些属性花费的时间较多4.不在动画中使用putImageData方法。这种操作导致性能下降5.通过计算和判断，避免视野之外">
+<meta property="og:description" content="问题描述查找两个节点的最近的一个共同父节点，可以包括节点自身 解题思路jquery contains方法可以判断一个几个节点元素是否包含另一个节点元素取任意一个节点1，依次往前取父节点，若这个父节点包含另外一个节点2，则此父节点则为满足要求的节点。注意：节点本身是包含本身的即node1.contains(node1)为true1234567function commonParentNode(oNo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-29T02:56:33.586Z">
+<meta property="og:updated_time" content="2018-06-11T12:29:50.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="canvas性能优化">
-<meta name="twitter:description" content="1.将渲染阶段的开销转嫁到计算阶段之上2.使用多个分层的canvas绘制复杂场景3.避免频繁设置绘制上下文的font属性 如linewidth等，调整绘制顺序，linewidth一致的放在一起绘制.因为设置linewidth,font,shadow,text,fillstyle这些属性花费的时间较多4.不在动画中使用putImageData方法。这种操作导致性能下降5.通过计算和判断，避免视野之外">
+<meta name="twitter:title" content="dom节点查找">
+<meta name="twitter:description" content="问题描述查找两个节点的最近的一个共同父节点，可以包括节点自身 解题思路jquery contains方法可以判断一个几个节点元素是否包含另一个节点元素取任意一个节点1，依次往前取父节点，若这个父节点包含另外一个节点2，则此父节点则为满足要求的节点。注意：节点本身是包含本身的即node1.contains(node1)为true1234567function commonParentNode(oNo">
   
     <link rel="alternate" href="/atom.xml" title="hcc226" type="application/atom+xml">
   
@@ -64,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-canvas性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-dom节点查找" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/29/canvas性能优化/" class="article-date">
-  <time datetime="2018-05-29T02:37:54.000Z" itemprop="datePublished">2018-05-29</time>
+    <a href="/2018/06/11/dom节点查找/" class="article-date">
+  <time datetime="2018-06-11T12:21:12.000Z" itemprop="datePublished">2018-06-11</time>
 </a>
     
   </div>
@@ -78,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      canvas性能优化
+      dom节点查找
     </h1>
   
 
@@ -86,33 +87,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.将渲染阶段的开销转嫁到计算阶段之上<br>2.使用多个分层的canvas绘制复杂场景<br>3.避免频繁设置绘制上下文的font属性 如linewidth等，调整绘制顺序，linewidth一致的放在一起绘制.<br>因为设置linewidth,font,shadow,text,fillstyle这些属性花费的时间较多<br>4.不在动画中使用putImageData方法。这种操作导致性能下降<br>5.通过计算和判断，避免视野之外元素的绘制。<br>6.离屏绘制。将固定的内容预先绘制在离屏canvas上以提高性能。例如，将待绘制的内容先裁剪好，保存起来。<br>先将对象绘制在一个未插入页面的canvas中，然后每一帧使用这个canvas绘制。<br>7.使用worker和拆分任务的方法避免复杂算法阻塞动画运行。避免渲染一帧的时间超过16ms</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>查找两个节点的最近的一个共同父节点，可以包括节点自身</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>jquery contains方法可以判断一个几个节点元素是否包含另一个节点元素<br>取任意一个节点1，依次往前取父节点，若这个父节点包含另外一个节点2，则此父节点则为满足要求的节点。<br>注意：节点本身是包含本身的即node1.contains(node1)为true<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">commonParentNode</span><span class="params">(oNode1, oNode2)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(;oNode1;oNode1 = oNode1.parentNode)&#123;</div><div class="line">        <span class="keyword">if</span>(oNode1.contains(oNode2))&#123;</div><div class="line">            <span class="keyword">return</span> oNode1</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjia8gxct00061oppf6fx2ne6" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjia8j9lk0000g4pp609h4lg5" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/05/30/Promise/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Promise
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/29/canvas宽高/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/06/07/Leetcode53-Maximum-Subarray/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">canvas宽高</div>
+      <div class="article-nav-title">Leetcode53 Maximum Subarray</div>
     </a>
   
 </nav>
