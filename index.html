@@ -65,6 +65,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue-js中计算属性computed与methods的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/" class="article-date">
+  <time datetime="2018-06-14T12:32:06.000Z" itemprop="datePublished">2018-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先来看两段代码<br>第一段，使用methods方法来计算返回值<br><img src="../img/method.jpg" alt="avatar"><br>第二段代码，使用计算属性computed返回值<br><img src="../img/computed.jpg" alt="avatar"><br>二者使用上的区别是使用methods需要调用now()和后者直接使用now<br>效果上 使用methods每秒页面的时间会进行更新，而后者不会，一直保持初始值，刷新页面后时间才会改变<br>那么computed与methods究竟有什么区别呢？</p>
+<h2 id="computed适用情景"><a href="#computed适用情景" class="headerlink" title="computed适用情景"></a>computed适用情景</h2><p>我们先来看看computed的使用情景</p>
+<h3 id="对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed"><a href="#对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed" class="headerlink" title="对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed"></a>对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed</h3><h3 id="计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行"><a href="#计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行" class="headerlink" title="计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行"></a>计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行</h3><h3 id="计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。"><a href="#计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。" class="headerlink" title="计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。"></a>计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。</h3><p>Date.now()不是响应式依赖，所以不会更新</p>
+<p>而对于methods来说，它不依赖缓存，只要重新渲染，他就会被调用，因此函数也会被执行。</p>
+<p>因此，使用计算属性还是methods取决于你是否需要缓存，当遍历大数组和大量计算时，应该使用计算属性。不需要缓存时使用methods</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="cjiejy31m000bmcppngpp6ncw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-newcoder-problems" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/12/newcoder-problems/" class="article-date">
@@ -92,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/12/newcoder-problems/" data-id="cjibpgy30000ds4ppwutxm7hl" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/12/newcoder-problems/" data-id="cjiejy31w000jmcppneq9vko1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/newcoder/">newcoder</a></li></ul>
@@ -132,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjibpgy2r0008s4pppln5zbtj" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjiejy31n000cmcpp4smdmycf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
@@ -175,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cjibpgy240001s4pph9dgy602" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cjiejy3110000mcppcc7hyjv7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -221,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cjibpgy35000is4ppkm2zoyml" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cjiejy31t000fmcppj1j81cek" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjibpgy260002s4ppndk3savm" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjiejy3190001mcppyk661cf6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjibpgy2o0006s4ppwzh9tr18" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjiejy31h0006mcpp3s021tw0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjibpgy2p0007s4pp4z9pwxc9" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjiejy31i0007mcppbp6i5dbq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjibpgy2s0009s4ppplr6fjce" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjiejy31j0008mcppkqaaaqk9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,53 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjibpgy32000gs4pp1c3lx5yw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-You-don-t-know-javascript-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/28/You-don-t-know-javascript-1/" class="article-date">
-  <time datetime="2018-04-28T06:32:43.000Z" itemprop="datePublished">2018-04-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/28/You-don-t-know-javascript-1/">You don&#39;t know javascript(1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="chapter-One-作用域"><a href="#chapter-One-作用域" class="headerlink" title="chapter One 作用域"></a>chapter One 作用域</h2><p>LHS 为其赋值<br>RHS 使用该变量<br>LHS时，如果找不到该变量，则会创建新的全局变量<br>严格模式下禁止此行为，会抛出ReferrenceError</p>
-<h2 id="chapter-Two-词法作用域"><a href="#chapter-Two-词法作用域" class="headerlink" title="chapter Two 词法作用域"></a>chapter Two 词法作用域</h2><p>eval 改变作用域<br>with 将一个对象的引用当做作用域来处理<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">with</span>(obj)&#123;</div><div class="line">        a = <span class="number">2</span>;</div><div class="line">        <span class="keyword">var</span> c = <span class="number">4</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(c)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> o1 = &#123;</div><div class="line">    a:<span class="number">3</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> o2 = &#123;</div><div class="line">    b:<span class="number">3</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(o1)</div><div class="line"><span class="built_in">console</span>.log(o1.a)<span class="comment">//2</span></div><div class="line"></div><div class="line">foo(o2)</div><div class="line"><span class="built_in">console</span>.log(o2)<span class="comment">//&#123;b:3&#125;</span></div><div class="line"><span class="built_in">console</span>.log(o2.a)<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(a)<span class="comment">//2</span></div><div class="line"></div></pre></td></tr></table></figure><br>对o2执行foo时，在foo上没有找到a属性，往上也没找到，因此创建一个全局a</p>
-<p>with 和 eval会使性能变差，使代码运行变慢，不要使用它们。</p>
-<h2 id="chapter-Three-函数作用域和块级作用域"><a href="#chapter-Three-函数作用域和块级作用域" class="headerlink" title="chapter Three 函数作用域和块级作用域"></a>chapter Three 函数作用域和块级作用域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//2</span></div><div class="line">&#125;)();</div><div class="line">foo();<span class="comment">//ReferenceError not defined</span></div><div class="line"><span class="built_in">console</span>.log(a);<span class="comment">//3</span></div></pre></td></tr></table></figure>
-<p>foo也不能在全局作用域中被访问<br>注意foo里面的a只属于函数foo作用域，函数外面的a属于全局作用域<br>var a 编译器向当前作用域询问是否包含该变量，如果是则忽略，否则会在当前作用域创建新的变量，命名为a</p>
-<h3 id="无块级作用域"><a href="#无块级作用域" class="headerlink" title="无块级作用域"></a>无块级作用域</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var f = <span class="number">2</span>;</div><div class="line"><span class="keyword">if</span>(f)&#123;</div><div class="line">    var <span class="built_in">bar</span> = f*<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">console.<span class="built_in">log</span>(<span class="built_in">bar</span>)<span class="comment">//4</span></div><div class="line"><span class="comment">//无论f为真为假，bar都会是被声明的 var bar;</span></div></pre></td></tr></table></figure>
-<p>let<br>const也是块级元素,在外部无法访问<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span>(foo)&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="keyword">const</span> b = <span class="number">3</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a)<span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(b)<span class="comment">// ReferenceError not defined</span></div></pre></td></tr></table></figure></p>
-<h2 id="chapter-Four-提升"><a href="#chapter-Four-提升" class="headerlink" title="chapter Four 提升"></a>chapter Four 提升</h2><p>包括变量和函数在内的所有声明（函数声明会被提升，函数表达式不会）都会在任何代码被执行前首先被处理。<br>var a = 2;将被分为 var a,和a = 2,var a 会被提升，在编译阶段进行，第二个赋值声明留在原地等待执行阶段。<br>各变量在各自的作用域内进行提升。<br>函数比变量优先提升<br>重复的函数声明会被覆盖</p>
-<h3 id="在一个普通块内部的函数声明通常会被提升到作用域的顶部"><a href="#在一个普通块内部的函数声明通常会被提升到作用域的顶部" class="headerlink" title="在一个普通块内部的函数声明通常会被提升到作用域的顶部"></a>在一个普通块内部的函数声明通常会被提升到作用域的顶部</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">foo();<span class="comment">//TypeError foo is not a function</span></div><div class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span>(a)&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"a"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"b"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="chapter-Five-作用域闭包"><a href="#chapter-Five-作用域闭包" class="headerlink" title="chapter Five 作用域闭包"></a>chapter Five 作用域闭包</h2><p>当函数可以记住并访问所在的词法作用域时，就产生的闭包，即使函数是在当前词法作用域之外执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();<span class="comment">//2</span></div></pre></td></tr></table></figure><br>bar拥有foo内部作用域的闭包，使得foo作用域调用之后不会被回收而一直存活，以共bar之后任何时间使用。<br>bar依然持有对该作用域的引用，这个引用就叫做闭包。<br>无论通过何种方式将内部函数传递到所在的词法作用域以外，都会蚩尤对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="cjibpgy2m0005s4ppk5ale5nj" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjiejy31u000gmcppp3bce1g0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -516,7 +513,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love-coding/">love coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newcoder/">newcoder</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love-coding/">love coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newcoder/">newcoder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
     </div>
   </div>
 
@@ -526,7 +523,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/love-coding/" style="font-size: 10px;">love coding</a> <a href="/tags/newcoder/" style="font-size: 10px;">newcoder</a>
+      <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/love-coding/" style="font-size: 10px;">love coding</a> <a href="/tags/newcoder/" style="font-size: 10px;">newcoder</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
     </div>
   </div>
 
@@ -548,6 +545,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/12/newcoder-problems/">newcoder problems</a>
           </li>
         
@@ -561,10 +562,6 @@
         
           <li>
             <a href="/2018/06/04/url匹配及repalce方法/">url匹配及repalce方法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/30/Promise/">Promise</a>
           </li>
         
       </ul>
