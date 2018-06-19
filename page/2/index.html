@@ -65,51 +65,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-vue-component-communication" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/02/vue-component-communication/" class="article-date">
-  <time datetime="2018-05-02T13:06:52.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/vue-component-communication/">vue-component-communication</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="vue父子组件通信"><a href="#vue父子组件通信" class="headerlink" title="vue父子组件通信"></a>vue父子组件通信</h2><p>Vue2.0只能用props从父向子传递消息，以下是实现从子到父传递的方法</p>
-<p>前端模板<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> v-model=<span class="string">"message"</span>&gt;</div><div class="line">&lt;my-<span class="keyword">component</span>  :message=<span class="string">"message"</span> @<span class="keyword">on</span>-change=<span class="string">"change"</span>&gt;&lt;/my-<span class="keyword">component</span>&gt;</div><div class="line">//父组件绑定<span class="keyword">on</span>-change事件，监听子组件的变化</div></pre></td></tr></table></figure></p>
-<p>子组件<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> tp = Vue.component(<span class="string">'my-component'</span>,&#123;</div><div class="line">    props:[<span class="string">'message'</span>],</div><div class="line">    <span class="keyword">data</span>:function () &#123;</div><div class="line">        <span class="keyword">return</span>&#123;</div><div class="line">            des:<span class="number">124</span>,</div><div class="line">            myMessage:<span class="keyword">this</span>.message</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    template:<span class="string">'&lt;div&gt;&lt;input v-model="myMessage"&gt;&lt;/div&gt;'</span>,<span class="comment">//绑定副本数据</span></div><div class="line">    watch:&#123;</div><div class="line">        message(<span class="keyword">val</span>)&#123;</div><div class="line">          <span class="keyword">this</span>.myMessage = <span class="keyword">val</span>;<span class="comment">//创建一个mymessage副本</span></div><div class="line">        &#125;,</div><div class="line">        myMessage(<span class="keyword">val</span>)&#123;</div><div class="line">            <span class="keyword">this</span>.$emit(<span class="string">"on-change"</span>,<span class="keyword">val</span>)<span class="comment">//自定义触发事件</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>父组件<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    el:<span class="string">'#test'</span>,</div><div class="line">    data:&#123;</div><div class="line">        message:<span class="string">'hello vue.js'</span></div><div class="line">    &#125;,</div><div class="line">    methods:&#123;</div><div class="line">      change:<span class="function"><span class="keyword">function</span> <span class="params">(val)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.message = val;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure></p>
-<ol>
-<li>在组件内的data对象中创建一个props属性的副本<br>因为result不可写，所以需要在data中创建一个副本myResult变量，初始值为props属性result的值，同时在组件内所有需要调用props的地方调用这个data对象myResult。</li>
-<li>创建针对props属性的watch来同步组件外对props的修改<br>此时在组件外（父组件）修改了组件的props，会同步到组件内对应的props上，但是不会同步到你刚刚在data对象中创建的那个副本上，所以需要再创建一个针对props属性result的watch（监听），当props修改后对应data中的副本myResult也要同步数据。</li>
-<li>创建针对props副本的watch，通知到组件外<br>此时在组件内修改了props的副本myResult，组件外不知道组件内的props状态，所以需要再创建一个针对props副本myResult，即对应data属性的watch。<br>在组件内向外层（父组件）发送通知，通知组件内属性变更，然后由外层（父组件）自己来变更他的数据</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjill00e1000hb0ppxieln6ff" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-You-don-t-know-javascript-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/28/You-don-t-know-javascript-1/" class="article-date">
@@ -448,10 +403,6 @@
       <ul>
         
           <li>
-            <a href="/2018/06/19/newcoder-problems-1/">newcoder problems</a>
-          </li>
-        
-          <li>
             <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
           </li>
         
@@ -465,6 +416,10 @@
         
           <li>
             <a href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/04/url匹配及repalce方法/">url匹配及repalce方法</a>
           </li>
         
       </ul>
