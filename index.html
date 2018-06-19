@@ -65,6 +65,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-newcoder-problems-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/19/newcoder-problems-1/" class="article-date">
+  <time datetime="2018-06-19T10:48:12.000Z" itemprop="datePublished">2018-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/19/newcoder-problems-1/">newcoder problems</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/19/newcoder-problems-1/" data-id="cjill00e0000gb0pp02kf4ur7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue-js中计算属性computed与methods的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/" class="article-date">
@@ -96,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="cjiejy31m000bmcppngpp6ncw" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="cjill00e2000ib0ppc24coprt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -132,10 +168,32 @@
       
         <h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span><span class="params">(n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n === <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>( n === <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> fibonacci(n<span class="number">-1</span>)+fibonacci(n<span class="number">-2</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.uniq = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(<span class="keyword">this</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="获取url参数"><a href="#获取url参数" class="headerlink" title="获取url参数"></a>获取url参数</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>获取 url 中的参数</p>
+<ol>
+<li>指定参数名称，返回该参数的值 或者 空字符串</li>
+<li>不指定参数名称，返回全部的参数对象 或者 {}</li>
+<li>如果存在多个同名参数，则返回数组<br>如输入<a href="http://www.nowcoder.com?key=1&amp;key=2&amp;key=3&amp;test=4#hehe" target="_blank" rel="external">http://www.nowcoder.com?key=1&amp;key=2&amp;key=3&amp;test=4#hehe</a> 输出[1,2,3]</li>
+</ol>
+<p>我的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">sUrl, sKey</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(sKey)&#123;</div><div class="line">      <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[?&amp;]"</span>+sKey+<span class="string">"=(([^&amp;#])+)"</span>,<span class="string">"g"</span>)</div><div class="line">      <span class="keyword">var</span> res = []</div><div class="line">      sUrl.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s,index,str</span>) </span>&#123;</div><div class="line">          <span class="built_in">console</span>.log(match+<span class="string">" "</span>+s+<span class="string">" "</span>+index+<span class="string">" "</span>+str)</div><div class="line">          res.push(s)</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">if</span>(res.length=<span class="number">0</span>)<span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">      <span class="keyword">return</span> res;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[?&amp;]([^&amp;#]+)=([^&amp;#]+)"</span>,<span class="string">"g"</span>)</div><div class="line">      <span class="keyword">var</span> res = &#123;&#125;;</div><div class="line">      sUrl.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s1,s2,index,str</span>) </span>&#123;</div><div class="line">          <span class="built_in">console</span>.log(match+<span class="string">" "</span>+s1+<span class="string">" "</span>+s2+<span class="string">" "</span>+index+<span class="string">" "</span>+str)</div><div class="line">          <span class="keyword">var</span> t = res[s1]</div><div class="line">          <span class="keyword">if</span>(res[s1])&#123;</div><div class="line">              <span class="built_in">console</span>.log(res[s1])</div><div class="line">              <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(res[s1]))&#123;</div><div class="line">                  t.push(s2)</div><div class="line">                  res[s1] = t;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">else</span> &#123;</div><div class="line">                  <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</div><div class="line"></div><div class="line">                  res[s1] = <span class="keyword">new</span> <span class="built_in">Array</span>(t,s2)</div><div class="line">                  <span class="built_in">console</span>.log(res[s1])</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">else</span> res[s1] = s2;</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">return</span> res;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>更简洁的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">sUrl,sKey</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> result = &#123;&#125;;</div><div class="line">    sUrl.replace(<span class="regexp">/\??(\w+)=(\w+)&amp;?/g</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,k,v</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(result[k] !== <span class="keyword">void</span> <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">var</span> t = result[k];</div><div class="line">            result[k] = [].concat(t,v);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            result[k] = v;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">if</span>(sKey === <span class="keyword">void</span> <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> result[sKey] || <span class="string">''</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>主要区别：<br>1.先将所有参数投提取出来，再根据sKey区分<br>2.正则表达式的区别<br>3.字符串与新字符串合并成数组的方法[].concat(t,v)</p>
+<h2 id="颜色字符串转换"><a href="#颜色字符串转换" class="headerlink" title="颜色字符串转换"></a>颜色字符串转换</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>将 rgb 颜色字符串转换为十六进制的形式，如 rgb(255, 255, 255) 转为 #ffffff</p>
+<ol>
+<li>rgb 中每个 , 后面的空格数量不固定</li>
+<li>十六进制表达式使用六位小写字母</li>
+<li>如果输入不符合 rgb 格式，返回原始输入</li>
+</ol>
+<p>输入rgb(255,  255,255) 输出#ffffff<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> res = <span class="string">"#"</span>;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^rgb\(([0-9]+),\s*([0-9]+),\s*([0-9]+)\)/g</span>;</div><div class="line">  <span class="keyword">if</span>(!reg.test(sRGB)) <span class="keyword">return</span> sRGB;</div><div class="line">  <span class="keyword">var</span> f = <span class="literal">true</span>;</div><div class="line">  sRGB.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s1,s2,s3</span>) </span>&#123;</div><div class="line"></div><div class="line">   s1 = <span class="built_in">Number</span>(s1);</div><div class="line">   s2 = <span class="built_in">Number</span>(s2);</div><div class="line">   s3 = <span class="built_in">Number</span>(s3);</div><div class="line"></div><div class="line">      s1 = <span class="built_in">parseInt</span>(s1);</div><div class="line">      s2 = <span class="built_in">parseInt</span>(s2);</div><div class="line">      s3 = <span class="built_in">parseInt</span>(s3);</div><div class="line">      <span class="comment">//console.log(`$&#123;match&#125; $&#123;s1&#125; $&#123;s2&#125; $&#123;s3&#125;`);</span></div><div class="line">   <span class="keyword">if</span>(s1&gt;<span class="number">255</span> || s2&gt;<span class="number">255</span> || s3&gt;<span class="number">255</span>)&#123;</div><div class="line">       <span class="built_in">console</span>.log(<span class="string">"dd"</span>)</div><div class="line">       f = <span class="literal">false</span>;</div><div class="line">       <span class="keyword">return</span> ;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">var</span> tmp = [s1,s2,s3].map(<span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123;</div><div class="line">       t = t.toString(<span class="number">16</span>);</div><div class="line">       <span class="keyword">if</span>(t.length==<span class="number">1</span>)&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">'0'</span>.concat(t)</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> t;</div><div class="line">   &#125;)</div><div class="line">   res += tmp[<span class="number">0</span>]+tmp[<span class="number">1</span>]+tmp[<span class="number">2</span>];</div><div class="line"></div><div class="line">  &#125;)</div><div class="line">    <span class="keyword">if</span>(f) <span class="keyword">return</span> res;</div><div class="line">    <span class="keyword">return</span> sRGB;</div></pre></td></tr></table></figure></p>
+<h2 id="将字符串转换为驼峰格式"><a href="#将字符串转换为驼峰格式" class="headerlink" title="将字符串转换为驼峰格式"></a>将字符串转换为驼峰格式</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>css 中经常有类似 background-image 这种通过 - 连接的字符，通过 javascript 设置样式的时候需要将这种样式转换成 backgroundImage 驼峰格式，请完成此转换功能</p>
+<ol>
+<li>以 - 为分隔符，将第二个起的非空单词首字母转为大写</li>
+<li>-webkit-border-image 转换后的结果为 webkitBorderImage<br>输入‘font-size’输出’fontSize’</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(sName.indexOf(<span class="string">'-'</span>) === <span class="number">-1</span> )<span class="keyword">return</span> sName;</div><div class="line">    <span class="keyword">if</span>(sName[<span class="number">0</span>] ==<span class="string">'-'</span>) sName = sName.slice(<span class="number">1</span>);</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/-([a-z]+)/g</span>;</div><div class="line">  <span class="comment">/*console.log(sName.match(reg))*/</span></div><div class="line">  <span class="keyword">var</span> res = sName.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s1,s2</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;match&#125;</span> <span class="subst">$&#123;s1&#125;</span> <span class="subst">$&#123;s2&#125;</span>`</span>)</div><div class="line">      <span class="keyword">return</span> s1[<span class="number">0</span>].toUpperCase()+s1.slice(<span class="number">1</span>)</div><div class="line">  &#125;)</div><div class="line">   <span class="keyword">return</span> res;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/12/newcoder-problems/" data-id="cjiejy31w000jmcppneq9vko1" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/12/newcoder-problems/" data-id="cjill00dy000eb0ppyjefeuel" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/newcoder/">newcoder</a></li></ul>
@@ -175,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjiejy31n000cmcpp4smdmycf" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjill00df0007b0ppnfz44csc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
@@ -218,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cjiejy3110000mcppcc7hyjv7" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cjill00d40001b0pp52j3hojv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -264,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cjiejy31t000fmcppj1j81cek" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cjill00e4000lb0pptcr9c8nj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjiejy3190001mcppyk661cf6" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjill00d70002b0ppvitumcc6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjiejy31h0006mcpp3s021tw0" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjill00de0006b0pp2bpx64e1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjiejy31i0007mcppbp6i5dbq" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjill00dd0005b0pp6qov3hrm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -442,52 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjiejy31j0008mcppkqaaaqk9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vue-component-communication" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/02/vue-component-communication/" class="article-date">
-  <time datetime="2018-05-02T13:06:52.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/vue-component-communication/">vue-component-communication</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="vue父子组件通信"><a href="#vue父子组件通信" class="headerlink" title="vue父子组件通信"></a>vue父子组件通信</h2><p>Vue2.0只能用props从父向子传递消息，以下是实现从子到父传递的方法</p>
-<p>前端模板<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> v-model=<span class="string">"message"</span>&gt;</div><div class="line">&lt;my-<span class="keyword">component</span>  :message=<span class="string">"message"</span> @<span class="keyword">on</span>-change=<span class="string">"change"</span>&gt;&lt;/my-<span class="keyword">component</span>&gt;</div><div class="line">//父组件绑定<span class="keyword">on</span>-change事件，监听子组件的变化</div></pre></td></tr></table></figure></p>
-<p>子组件<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> tp = Vue.component(<span class="string">'my-component'</span>,&#123;</div><div class="line">    props:[<span class="string">'message'</span>],</div><div class="line">    <span class="keyword">data</span>:function () &#123;</div><div class="line">        <span class="keyword">return</span>&#123;</div><div class="line">            des:<span class="number">124</span>,</div><div class="line">            myMessage:<span class="keyword">this</span>.message</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    template:<span class="string">'&lt;div&gt;&lt;input v-model="myMessage"&gt;&lt;/div&gt;'</span>,<span class="comment">//绑定副本数据</span></div><div class="line">    watch:&#123;</div><div class="line">        message(<span class="keyword">val</span>)&#123;</div><div class="line">          <span class="keyword">this</span>.myMessage = <span class="keyword">val</span>;<span class="comment">//创建一个mymessage副本</span></div><div class="line">        &#125;,</div><div class="line">        myMessage(<span class="keyword">val</span>)&#123;</div><div class="line">            <span class="keyword">this</span>.$emit(<span class="string">"on-change"</span>,<span class="keyword">val</span>)<span class="comment">//自定义触发事件</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>父组件<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    el:<span class="string">'#test'</span>,</div><div class="line">    data:&#123;</div><div class="line">        message:<span class="string">'hello vue.js'</span></div><div class="line">    &#125;,</div><div class="line">    methods:&#123;</div><div class="line">      change:<span class="function"><span class="keyword">function</span> <span class="params">(val)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.message = val;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure></p>
-<ol>
-<li>在组件内的data对象中创建一个props属性的副本<br>因为result不可写，所以需要在data中创建一个副本myResult变量，初始值为props属性result的值，同时在组件内所有需要调用props的地方调用这个data对象myResult。</li>
-<li>创建针对props属性的watch来同步组件外对props的修改<br>此时在组件外（父组件）修改了组件的props，会同步到组件内对应的props上，但是不会同步到你刚刚在data对象中创建的那个副本上，所以需要再创建一个针对props属性result的watch（监听），当props修改后对应data中的副本myResult也要同步数据。</li>
-<li>创建针对props副本的watch，通知到组件外<br>此时在组件内修改了props的副本myResult，组件外不知道组件内的props状态，所以需要再创建一个针对props副本myResult，即对应data属性的watch。<br>在组件内向外层（父组件）发送通知，通知组件内属性变更，然后由外层（父组件）自己来变更他的数据</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjiejy31u000gmcppp3bce1g0" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjill00dt000bb0pp5wb6aueu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -545,6 +558,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/19/newcoder-problems-1/">newcoder problems</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
           </li>
         
@@ -558,10 +575,6 @@
         
           <li>
             <a href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/04/url匹配及repalce方法/">url匹配及repalce方法</a>
           </li>
         
       </ul>
