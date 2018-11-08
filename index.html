@@ -65,6 +65,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Object-defineProperty" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/01/Object-defineProperty/" class="article-date">
+  <time datetime="2018-11-01T14:16:09.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/01/Object-defineProperty/">Object.defineProperty及seal freeze相关函数总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Object-defineProperty用法"><a href="#Object-defineProperty用法" class="headerlink" title="Object.defineProperty用法"></a>Object.defineProperty用法</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>Object.defineProperty(obj, prop, descriptor)<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//对象已有的属性添加特性描述</span></div><div class="line">Object.defineProperty(obj,<span class="string">"test"</span>,&#123;</div><div class="line">	<span class="keyword">get</span>:<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    <span class="keyword">set</span>:<span class="function"><span class="keyword">function</span> <span class="params">(value)</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    configurable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    enumerable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    value:任意类型的值,</div><div class="line">    writable:<span class="literal">true</span> | <span class="literal">false</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">//对象新添加的属性的特性描述</span></div><div class="line">Object.defineProperty(obj,<span class="string">"newKey"</span>,&#123;</div><div class="line">	<span class="keyword">get</span>:<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    <span class="keyword">set</span>:<span class="function"><span class="keyword">function</span> <span class="params">(value)</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    configurable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    enumerable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    value:任意类型的值,</div><div class="line">    writable:<span class="literal">true</span> | <span class="literal">false</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义"></a>参数含义</h3><p>value:属性对应的值<br>writable:属性的值是否可以被重写<br>enumerable:属性是否可以被枚举（for…in 或者Object.keys()）<br>configurable:是否可以删除目标属性或是否可以再次修改属性的特性（writable,configurable,enumerable）<br>get/set:<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(obj,<span class="string">"newKey"</span>,&#123;</div><div class="line">    <span class="keyword">get</span>:<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//当获取值的时候触发的函数</span></div><div class="line">        <span class="keyword">return</span> initValue;    </div><div class="line">    &#125;,</div><div class="line">    <span class="keyword">set</span>:<span class="function"><span class="keyword">function</span> <span class="params">(value)</span></span>&#123;</div><div class="line">        <span class="comment">//当设置值的时候触发的函数,设置的新值通过参数value拿到</span></div><div class="line">        initValue = value;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a>Object.preventExtensions()</h2><p>阻止对象扩展，让一个对象永远不能再添加新的属性<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Object</span><span class="selector-class">.preventExtensions</span>(<span class="selector-tag">obj</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="Object-isExtensible"><a href="#Object-isExtensible" class="headerlink" title="Object.isExtensible()"></a>Object.isExtensible()</h2><p>判断一个对象是否可扩展,返回true/false</p>
+<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a>Object.seal()</h2><p>不能添加新的属性<br>不能删除已有属性<br>不能修改已有属性的enumerable,configurable,writable，但可以修改已有属性的值</p>
+<p>返回被密封后的对象</p>
+<h2 id="Object-isSealed"><a href="#Object-isSealed" class="headerlink" title="Object.isSealed()"></a>Object.isSealed()</h2><p>判断是否被密封</p>
+<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a>Object.freeze()</h2><p>在seal的基础上不能修改属性的值</p>
+<h2 id="Object-isFrozen"><a href="#Object-isFrozen" class="headerlink" title="Object.isFrozen()"></a>Object.isFrozen()</h2><p>判断一个对象是否被冻结</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/11/01/Object-defineProperty/" data-id="cjo8lzfkt00010sppjarw02pj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue-js中计算属性computed与methods的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/" class="article-date">
@@ -96,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="cjill00e2000ib0ppc24coprt" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="cjo8lzflu000j0spp7hwwm4bb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -157,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/12/newcoder-problems/" data-id="cjill00dy000eb0ppyjefeuel" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/12/newcoder-problems/" data-id="cjo8lzflj000e0sppms7twai2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/newcoder/">newcoder</a></li></ul>
@@ -197,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjill00df0007b0ppnfz44csc" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjo8lzfl600070spp6itdas33" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
@@ -240,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cjill00d40001b0pp52j3hojv" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cjo8lzfkm00000sppqd02tcqz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cjill00e4000lb0pptcr9c8nj" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cjo8lzflw000m0sppgf5t99er" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjill00d70002b0ppvitumcc6" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjo8lzfkz00040sppr5rzlej7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjill00de0006b0pp2bpx64e1" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjo8lzfl700080spp9key4dmw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -418,7 +463,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjill00dd0005b0pp6qov3hrm" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjo8lzfl400060sppaipztpkk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -464,52 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjill00dt000bb0pp5wb6aueu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vue-component-communication" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/02/vue-component-communication/" class="article-date">
-  <time datetime="2018-05-02T13:06:52.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/vue-component-communication/">vue-component-communication</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="vue父子组件通信"><a href="#vue父子组件通信" class="headerlink" title="vue父子组件通信"></a>vue父子组件通信</h2><p>Vue2.0只能用props从父向子传递消息，以下是实现从子到父传递的方法</p>
-<p>前端模板<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> v-model=<span class="string">"message"</span>&gt;</div><div class="line">&lt;my-<span class="keyword">component</span>  :message=<span class="string">"message"</span> @<span class="keyword">on</span>-change=<span class="string">"change"</span>&gt;&lt;/my-<span class="keyword">component</span>&gt;</div><div class="line">//父组件绑定<span class="keyword">on</span>-change事件，监听子组件的变化</div></pre></td></tr></table></figure></p>
-<p>子组件<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> tp = Vue.component(<span class="string">'my-component'</span>,&#123;</div><div class="line">    props:[<span class="string">'message'</span>],</div><div class="line">    <span class="keyword">data</span>:function () &#123;</div><div class="line">        <span class="keyword">return</span>&#123;</div><div class="line">            des:<span class="number">124</span>,</div><div class="line">            myMessage:<span class="keyword">this</span>.message</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    template:<span class="string">'&lt;div&gt;&lt;input v-model="myMessage"&gt;&lt;/div&gt;'</span>,<span class="comment">//绑定副本数据</span></div><div class="line">    watch:&#123;</div><div class="line">        message(<span class="keyword">val</span>)&#123;</div><div class="line">          <span class="keyword">this</span>.myMessage = <span class="keyword">val</span>;<span class="comment">//创建一个mymessage副本</span></div><div class="line">        &#125;,</div><div class="line">        myMessage(<span class="keyword">val</span>)&#123;</div><div class="line">            <span class="keyword">this</span>.$emit(<span class="string">"on-change"</span>,<span class="keyword">val</span>)<span class="comment">//自定义触发事件</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>父组件<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    el:<span class="string">'#test'</span>,</div><div class="line">    data:&#123;</div><div class="line">        message:<span class="string">'hello vue.js'</span></div><div class="line">    &#125;,</div><div class="line">    methods:&#123;</div><div class="line">      change:<span class="function"><span class="keyword">function</span> <span class="params">(val)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.message = val;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure></p>
-<ol>
-<li>在组件内的data对象中创建一个props属性的副本<br>因为result不可写，所以需要在data中创建一个副本myResult变量，初始值为props属性result的值，同时在组件内所有需要调用props的地方调用这个data对象myResult。</li>
-<li>创建针对props属性的watch来同步组件外对props的修改<br>此时在组件外（父组件）修改了组件的props，会同步到组件内对应的props上，但是不会同步到你刚刚在data对象中创建的那个副本上，所以需要再创建一个针对props属性result的watch（监听），当props修改后对应data中的副本myResult也要同步数据。</li>
-<li>创建针对props副本的watch，通知到组件外<br>此时在组件内修改了props的副本myResult，组件外不知道组件内的props状态，所以需要再创建一个针对props副本myResult，即对应data属性的watch。<br>在组件内向外层（父组件）发送通知，通知组件内属性变更，然后由外层（父组件）自己来变更他的数据</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="cjill00e1000hb0ppxieln6ff" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjo8lzfld000a0sppf7cuohsl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,7 +554,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -565,6 +565,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/11/01/Object-defineProperty/">Object.defineProperty及seal freeze相关函数总结</a>
+          </li>
         
           <li>
             <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
@@ -580,10 +584,6 @@
         
           <li>
             <a href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/04/url匹配及repalce方法/">url匹配及repalce方法</a>
           </li>
         
       </ul>
