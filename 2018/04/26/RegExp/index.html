@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>RegExp | hcc226</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义正则 1 var re = new RegExp(“a”,flags); 2 var re = /a/flags; flags取值： g:全局模式 即模式将被应用于所有字符串中，而非在发现第一个匹配项时立即停止 i:表示不区分大小写 m:表示多行模式 即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项 正则的常用方法test() 在字符串中查找符合正则的内容，查找到返回true，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RegExp">
+<meta property="og:url" content="https://hcc226.github.io/2018/04/26/RegExp/index.html">
+<meta property="og:site_name" content="hcc226">
+<meta property="og:description" content="定义正则 1 var re = new RegExp(“a”,flags); 2 var re = /a/flags; flags取值： g:全局模式 即模式将被应用于所有字符串中，而非在发现第一个匹配项时立即停止 i:表示不区分大小写 m:表示多行模式 即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项 正则的常用方法test() 在字符串中查找符合正则的内容，查找到返回true，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-26T04:14:15.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RegExp">
+<meta name="twitter:description" content="定义正则 1 var re = new RegExp(“a”,flags); 2 var re = /a/flags; flags取值： g:全局模式 即模式将被应用于所有字符串中，而非在发现第一个匹配项时立即停止 i:表示不区分大小写 m:表示多行模式 即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项 正则的常用方法test() 在字符串中查找符合正则的内容，查找到返回true，">
+  
+    <link rel="alternate" href="/atom.xml" title="hcc226" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hcc226</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hcc226.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-RegExp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/26/RegExp/" class="article-date">
+  <time datetime="2018-04-26T15:25:42.000Z" itemprop="datePublished">2018-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RegExp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="定义正则"><a href="#定义正则" class="headerlink" title="定义正则"></a>定义正则</h3><p> 1 var re = new RegExp(“a”,flags);<br> 2 var re = /a/flags;<br> flags取值：<br> g:全局模式 即模式将被应用于所有字符串中，而非在发现第一个匹配项时立即停止<br> i:表示不区分大小写<br> m:表示多行模式 即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项</p>
+<h3 id="正则的常用方法"><a href="#正则的常用方法" class="headerlink" title="正则的常用方法"></a>正则的常用方法</h3><h4 id="test-在字符串中查找符合正则的内容，查找到返回true，否则false"><a href="#test-在字符串中查找符合正则的内容，查找到返回true，否则false" class="headerlink" title="test() 在字符串中查找符合正则的内容，查找到返回true，否则false"></a>test() 在字符串中查找符合正则的内容，查找到返回true，否则false</h4><h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>   正则.test(字符串)</p>
+<h4 id="exec-搜索符合规则的内容，返回数组和对象？？"><a href="#exec-搜索符合规则的内容，返回数组和对象？？" class="headerlink" title="exec() 搜索符合规则的内容，返回数组和对象？？"></a>exec() 搜索符合规则的内容，返回数组和对象？？</h4><h5 id="用法-1"><a href="#用法-1" class="headerlink" title="用法:"></a>用法:</h5><p> 正则.exec(字符串) 调用一次为匹配一次，全局匹配需多次调用<br> 返回结果为数组包括匹配的字符串 以及子项以及input index属性<br> .index匹配到字符串的位置<br> .input匹配成功的字符串</p>
+<h4 id="search-在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1"><a href="#search-在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1" class="headerlink" title="search() 在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1"></a>search() 在字符串中搜索符合正则的内容，搜索到就返回出现的位置（c0开始，如果匹配的不只是一个字母，那只会返回第一个字母的位置），搜索失败返回-1</h4><h5 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h5><p> 字符串.search(正则)</p>
+<h4 id="match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null"><a href="#match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null" class="headerlink" title="match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null"></a>match（）在字符串中搜索符合规则的内容，搜索成功返回内容，格式为数组，否则返回null</h4><h5 id="用法：-1"><a href="#用法：-1" class="headerlink" title="用法："></a>用法：</h5><p> 字符串.match(正则)</p>
+<h4 id="replace-查找符合正则的字符串-就替换为相应的字符串，返回替换后的内容"><a href="#replace-查找符合正则的字符串-就替换为相应的字符串，返回替换后的内容" class="headerlink" title="replace() 查找符合正则的字符串 就替换为相应的字符串，返回替换后的内容"></a>replace() 查找符合正则的字符串 就替换为相应的字符串，返回替换后的内容</h4><h5 id="用法-2"><a href="#用法-2" class="headerlink" title="用法"></a>用法</h5><p> 字符串.repalce(正则，新的字符串/回调函数)在回调函数中，第一个参数指的是每次匹配成功的字符</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="clm0vwokz00048z9jujziysmi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/28/You-don-t-know-javascript-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          You don&#39;t know javascript(1)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/25/flex/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">flex</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love-coding/">love coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newcoder/">newcoder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/love-coding/" style="font-size: 10px;">love coding</a> <a href="/tags/newcoder/" style="font-size: 10px;">newcoder</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/01/mobile-pages-that-I-have-worked-on/">Mobile pages that I have worked on</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/28/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/01/Object-defineProperty/">Object.defineProperty及seal freeze相关函数总结</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/12/newcoder-problems/">newcoder problems</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
