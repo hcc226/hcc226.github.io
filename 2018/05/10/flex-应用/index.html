@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>flex 应用 | hcc226</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天面试问到flex布局实现1-9骰子的排布，所以来总结一下。 数字一12345678910111213141516171819#container&amp;#123;            height: 150px;            width: 150px;            background-color: #ffcc99;            border-radius: 5px;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex 应用">
+<meta property="og:url" content="https://hcc226.github.io/2018/05/10/flex-应用/index.html">
+<meta property="og:site_name" content="hcc226">
+<meta property="og:description" content="今天面试问到flex布局实现1-9骰子的排布，所以来总结一下。 数字一12345678910111213141516171819#container&amp;#123;            height: 150px;            width: 150px;            background-color: #ffcc99;            border-radius: 5px;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hcc226.github.io/2018/05/10/img/demo.jpg">
+<meta property="og:updated_time" content="2018-05-21T10:01:27.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flex 应用">
+<meta name="twitter:description" content="今天面试问到flex布局实现1-9骰子的排布，所以来总结一下。 数字一12345678910111213141516171819#container&amp;#123;            height: 150px;            width: 150px;            background-color: #ffcc99;            border-radius: 5px;">
+<meta name="twitter:image" content="https://hcc226.github.io/2018/05/10/img/demo.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="hcc226" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hcc226</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hcc226.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-flex-应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/10/flex-应用/" class="article-date">
+  <time datetime="2018-05-10T06:25:10.000Z" itemprop="datePublished">2018-05-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      flex 应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天面试问到flex布局实现1-9骰子的排布，所以来总结一下。</p>
+<h2 id="数字一"><a href="#数字一" class="headerlink" title="数字一"></a>数字一</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#container&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#ffcc99</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">display</span>: flex;</div><div class="line">            <span class="attribute">align-items</span>: center;</div><div class="line">            <span class="attribute">justify-content</span>: center;</div><div class="line">        &#125;</div><div class="line">#item1&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">width</span>:<span class="number">40px</span>;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">2.5px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">background-color</span>: black;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="selector-tag">div</span> id=<span class="string">"container"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> id=<span class="string">"item1"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h2 id="数字二"><a href="#数字二" class="headerlink" title="数字二"></a>数字二</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> #two&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#ffcc99</span>;</div><div class="line">            <span class="attribute">margin-top</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">display</span>: flex;</div><div class="line">            <span class="attribute">flex-direction</span>: column;</div><div class="line">            <span class="attribute">align-items</span>: center;</div><div class="line">            <span class="attribute">justify-content</span>: space-between;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"> <span class="selector-id">#two-item1</span>,#two-item2&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">background-color</span>: black;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">5px</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="selector-tag">div</span> id = <span class="string">"two"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> id=<span class="string">"two-item1"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> id=<span class="string">"two-item2"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>注意 以下代码都基于这两个类<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#ffcc99</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">margin-top</span>: <span class="number">5px</span>;</div><div class="line">        &#125;</div><div class="line"> <span class="selector-class">.item</span>&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">background-color</span>: black;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">5px</span>;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#three&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#three-item2&#123;</span></div><div class="line">          align-self: center;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#three-item3&#123;</span></div><div class="line">            align-self: flex-<span class="keyword">end</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three"</span> <span class="built_in">class</span>=<span class="string">"container"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three-item1"</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three-item2"</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three-item3"</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#four&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">between</span>;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#four-line1,#four-line2&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">between</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"four"</span> <span class="built_in">class</span>=<span class="string">"container"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"four-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item1"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item2"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"four-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item3"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item4"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line"></div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="五"><a href="#五" class="headerlink" title="五"></a>五</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#five&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#five-line1,#five-line3&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">between</span>;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#five-line2&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: center;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"five"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="六"><a href="#六" class="headerlink" title="六"></a>六</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#six&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#six-line1,#six-line2,#six-line3&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">around</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"six"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="九"><a href="#九" class="headerlink" title="九"></a>九</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#nine&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"nine"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div><div class="line"></div></pre></td></tr></table></figure>
+<p>结果如图所示<br><img src="../img/demo.jpg" alt="avatar"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjo8lzfld000a0sppf7cuohsl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/29/canvas宽高/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          canvas宽高
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/02/vue-component-communication/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue-component-communication</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love-coding/">love coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newcoder/">newcoder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/love-coding/" style="font-size: 10px;">love coding</a> <a href="/tags/newcoder/" style="font-size: 10px;">newcoder</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/01/Object-defineProperty/">Object.defineProperty及seal freeze相关函数总结</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/12/newcoder-problems/">newcoder problems</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/11/dom节点查找/">dom节点查找</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

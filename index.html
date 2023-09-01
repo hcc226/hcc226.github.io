@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hcc226</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="make me different">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hcc226">
+<meta property="og:url" content="https://hcc226.github.io/index.html">
+<meta property="og:site_name" content="hcc226">
+<meta property="og:description" content="make me different">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hcc226">
+<meta name="twitter:description" content="make me different">
+  
+    <link rel="alternate" href="/atom.xml" title="hcc226" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hcc226</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hcc226.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Object-defineProperty" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/01/Object-defineProperty/" class="article-date">
+  <time datetime="2018-11-01T14:16:09.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/01/Object-defineProperty/">Object.defineProperty及seal freeze相关函数总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Object-defineProperty用法"><a href="#Object-defineProperty用法" class="headerlink" title="Object.defineProperty用法"></a>Object.defineProperty用法</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>Object.defineProperty(obj, prop, descriptor)<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//对象已有的属性添加特性描述</span></div><div class="line">Object.defineProperty(obj,<span class="string">"test"</span>,&#123;</div><div class="line">	<span class="keyword">get</span>:<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    <span class="keyword">set</span>:<span class="function"><span class="keyword">function</span> <span class="params">(value)</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    configurable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    enumerable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    value:任意类型的值,</div><div class="line">    writable:<span class="literal">true</span> | <span class="literal">false</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">//对象新添加的属性的特性描述</span></div><div class="line">Object.defineProperty(obj,<span class="string">"newKey"</span>,&#123;</div><div class="line">	<span class="keyword">get</span>:<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    <span class="keyword">set</span>:<span class="function"><span class="keyword">function</span> <span class="params">(value)</span></span>&#123;&#125; | <span class="literal">undefined</span>,</div><div class="line">    configurable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    enumerable:<span class="literal">true</span> | <span class="literal">false</span>,</div><div class="line">    value:任意类型的值,</div><div class="line">    writable:<span class="literal">true</span> | <span class="literal">false</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义"></a>参数含义</h3><p>value:属性对应的值<br>writable:属性的值是否可以被重写<br>enumerable:属性是否可以被枚举（for…in 或者Object.keys()）<br>configurable:是否可以删除目标属性或是否可以再次修改属性的特性（writable,configurable,enumerable）<br>get/set:<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(obj,<span class="string">"newKey"</span>,&#123;</div><div class="line">    <span class="keyword">get</span>:<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//当获取值的时候触发的函数</span></div><div class="line">        <span class="keyword">return</span> initValue;    </div><div class="line">    &#125;,</div><div class="line">    <span class="keyword">set</span>:<span class="function"><span class="keyword">function</span> <span class="params">(value)</span></span>&#123;</div><div class="line">        <span class="comment">//当设置值的时候触发的函数,设置的新值通过参数value拿到</span></div><div class="line">        initValue = value;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a>Object.preventExtensions()</h2><p>阻止对象扩展，让一个对象永远不能再添加新的属性<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Object</span><span class="selector-class">.preventExtensions</span>(<span class="selector-tag">obj</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="Object-isExtensible"><a href="#Object-isExtensible" class="headerlink" title="Object.isExtensible()"></a>Object.isExtensible()</h2><p>判断一个对象是否可扩展,返回true/false</p>
+<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a>Object.seal()</h2><p>不能添加新的属性<br>不能删除已有属性<br>不能修改已有属性的enumerable,configurable,writable，但可以修改已有属性的值</p>
+<p>返回被密封后的对象</p>
+<h2 id="Object-isSealed"><a href="#Object-isSealed" class="headerlink" title="Object.isSealed()"></a>Object.isSealed()</h2><p>判断是否被密封</p>
+<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a>Object.freeze()</h2><p>在seal的基础上不能修改属性的值</p>
+<h2 id="Object-isFrozen"><a href="#Object-isFrozen" class="headerlink" title="Object.isFrozen()"></a>Object.isFrozen()</h2><p>判断一个对象是否被冻结</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/11/01/Object-defineProperty/" data-id="cjo8lzfkt00010sppjarw02pj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue-js中计算属性computed与methods的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/" class="article-date">
+  <time datetime="2018-06-14T12:32:06.000Z" itemprop="datePublished">2018-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先来看两段代码<br>第一段，使用methods方法来计算返回值<br><img src="../img/method.jpg" alt="avatar"><br>第二段代码，使用计算属性computed返回值<br><img src="../img/computed.jpg" alt="avatar"><br>二者使用上的区别是使用methods需要调用now()和后者直接使用now<br>效果上 使用methods每秒页面的时间会进行更新，而后者不会，一直保持初始值，刷新页面后时间才会改变<br>那么computed与methods究竟有什么区别呢？</p>
+<h2 id="computed适用情景"><a href="#computed适用情景" class="headerlink" title="computed适用情景"></a>computed适用情景</h2><p>我们先来看看computed的使用情景</p>
+<h3 id="对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed"><a href="#对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed" class="headerlink" title="对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed"></a>对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed</h3><h3 id="计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行"><a href="#计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行" class="headerlink" title="计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行"></a>计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行</h3><h3 id="计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。"><a href="#计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。" class="headerlink" title="计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。"></a>计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。</h3><p>Date.now()不是响应式依赖，所以不会更新</p>
+<p>而对于methods来说，它不依赖缓存，只要重新渲染，他就会被调用，因此函数也会被执行。</p>
+<p>因此，使用计算属性还是methods取决于你是否需要缓存，当遍历大数组和大量计算时，应该使用计算属性。不需要缓存时使用methods</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="cjo8lzflu000j0spp7hwwm4bb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-newcoder-problems" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/12/newcoder-problems/" class="article-date">
+  <time datetime="2018-06-12T13:07:52.000Z" itemprop="datePublished">2018-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/12/newcoder-problems/">newcoder problems</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span><span class="params">(n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(n === <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>( n === <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> fibonacci(n<span class="number">-1</span>)+fibonacci(n<span class="number">-2</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.uniq = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(<span class="keyword">this</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="获取url参数"><a href="#获取url参数" class="headerlink" title="获取url参数"></a>获取url参数</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>获取 url 中的参数</p>
+<ol>
+<li>指定参数名称，返回该参数的值 或者 空字符串</li>
+<li>不指定参数名称，返回全部的参数对象 或者 {}</li>
+<li>如果存在多个同名参数，则返回数组<br>如输入<a href="http://www.nowcoder.com?key=1&amp;key=2&amp;key=3&amp;test=4#hehe" target="_blank" rel="external">http://www.nowcoder.com?key=1&amp;key=2&amp;key=3&amp;test=4#hehe</a> 输出[1,2,3]</li>
+</ol>
+<p>我的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">sUrl, sKey</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(sKey)&#123;</div><div class="line">      <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[?&amp;]"</span>+sKey+<span class="string">"=(([^&amp;#])+)"</span>,<span class="string">"g"</span>)</div><div class="line">      <span class="keyword">var</span> res = []</div><div class="line">      sUrl.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s,index,str</span>) </span>&#123;</div><div class="line">          <span class="built_in">console</span>.log(match+<span class="string">" "</span>+s+<span class="string">" "</span>+index+<span class="string">" "</span>+str)</div><div class="line">          res.push(s)</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">if</span>(res.length=<span class="number">0</span>)<span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">      <span class="keyword">return</span> res;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[?&amp;]([^&amp;#]+)=([^&amp;#]+)"</span>,<span class="string">"g"</span>)</div><div class="line">      <span class="keyword">var</span> res = &#123;&#125;;</div><div class="line">      sUrl.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s1,s2,index,str</span>) </span>&#123;</div><div class="line">          <span class="built_in">console</span>.log(match+<span class="string">" "</span>+s1+<span class="string">" "</span>+s2+<span class="string">" "</span>+index+<span class="string">" "</span>+str)</div><div class="line">          <span class="keyword">var</span> t = res[s1]</div><div class="line">          <span class="keyword">if</span>(res[s1])&#123;</div><div class="line">              <span class="built_in">console</span>.log(res[s1])</div><div class="line">              <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(res[s1]))&#123;</div><div class="line">                  t.push(s2)</div><div class="line">                  res[s1] = t;</div><div class="line">              &#125;</div><div class="line">              <span class="keyword">else</span> &#123;</div><div class="line">                  <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</div><div class="line"></div><div class="line">                  res[s1] = <span class="keyword">new</span> <span class="built_in">Array</span>(t,s2)</div><div class="line">                  <span class="built_in">console</span>.log(res[s1])</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">else</span> res[s1] = s2;</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">return</span> res;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>更简洁的方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">sUrl,sKey</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> result = &#123;&#125;;</div><div class="line">    sUrl.replace(<span class="regexp">/\??(\w+)=(\w+)&amp;?/g</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a,k,v</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(result[k] !== <span class="keyword">void</span> <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">var</span> t = result[k];</div><div class="line">            result[k] = [].concat(t,v);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            result[k] = v;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">if</span>(sKey === <span class="keyword">void</span> <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> result[sKey] || <span class="string">''</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>主要区别：<br>1.先将所有参数投提取出来，再根据sKey区分<br>2.正则表达式的区别<br>3.字符串与新字符串合并成数组的方法[].concat(t,v)</p>
+<h2 id="颜色字符串转换"><a href="#颜色字符串转换" class="headerlink" title="颜色字符串转换"></a>颜色字符串转换</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>将 rgb 颜色字符串转换为十六进制的形式，如 rgb(255, 255, 255) 转为 #ffffff</p>
+<ol>
+<li>rgb 中每个 , 后面的空格数量不固定</li>
+<li>十六进制表达式使用六位小写字母</li>
+<li>如果输入不符合 rgb 格式，返回原始输入</li>
+</ol>
+<p>输入rgb(255,  255,255) 输出#ffffff<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> res = <span class="string">"#"</span>;</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/^rgb\(([0-9]+),\s*([0-9]+),\s*([0-9]+)\)/g</span>;</div><div class="line">  <span class="keyword">if</span>(!reg.test(sRGB)) <span class="keyword">return</span> sRGB;</div><div class="line">  <span class="keyword">var</span> f = <span class="literal">true</span>;</div><div class="line">  sRGB.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s1,s2,s3</span>) </span>&#123;</div><div class="line"></div><div class="line">   s1 = <span class="built_in">Number</span>(s1);</div><div class="line">   s2 = <span class="built_in">Number</span>(s2);</div><div class="line">   s3 = <span class="built_in">Number</span>(s3);</div><div class="line"></div><div class="line">      s1 = <span class="built_in">parseInt</span>(s1);</div><div class="line">      s2 = <span class="built_in">parseInt</span>(s2);</div><div class="line">      s3 = <span class="built_in">parseInt</span>(s3);</div><div class="line">      <span class="comment">//console.log(`$&#123;match&#125; $&#123;s1&#125; $&#123;s2&#125; $&#123;s3&#125;`);</span></div><div class="line">   <span class="keyword">if</span>(s1&gt;<span class="number">255</span> || s2&gt;<span class="number">255</span> || s3&gt;<span class="number">255</span>)&#123;</div><div class="line">       <span class="built_in">console</span>.log(<span class="string">"dd"</span>)</div><div class="line">       f = <span class="literal">false</span>;</div><div class="line">       <span class="keyword">return</span> ;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">var</span> tmp = [s1,s2,s3].map(<span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123;</div><div class="line">       t = t.toString(<span class="number">16</span>);</div><div class="line">       <span class="keyword">if</span>(t.length==<span class="number">1</span>)&#123;</div><div class="line">           <span class="keyword">return</span> <span class="string">'0'</span>.concat(t)</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> t;</div><div class="line">   &#125;)</div><div class="line">   res += tmp[<span class="number">0</span>]+tmp[<span class="number">1</span>]+tmp[<span class="number">2</span>];</div><div class="line"></div><div class="line">  &#125;)</div><div class="line">    <span class="keyword">if</span>(f) <span class="keyword">return</span> res;</div><div class="line">    <span class="keyword">return</span> sRGB;</div></pre></td></tr></table></figure></p>
+<h2 id="将字符串转换为驼峰格式"><a href="#将字符串转换为驼峰格式" class="headerlink" title="将字符串转换为驼峰格式"></a>将字符串转换为驼峰格式</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>css 中经常有类似 background-image 这种通过 - 连接的字符，通过 javascript 设置样式的时候需要将这种样式转换成 backgroundImage 驼峰格式，请完成此转换功能</p>
+<ol>
+<li>以 - 为分隔符，将第二个起的非空单词首字母转为大写</li>
+<li>-webkit-border-image 转换后的结果为 webkitBorderImage<br>输入‘font-size’输出’fontSize’</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(sName.indexOf(<span class="string">'-'</span>) === <span class="number">-1</span> )<span class="keyword">return</span> sName;</div><div class="line">    <span class="keyword">if</span>(sName[<span class="number">0</span>] ==<span class="string">'-'</span>) sName = sName.slice(<span class="number">1</span>);</div><div class="line">  <span class="keyword">var</span> reg = <span class="regexp">/-([a-z]+)/g</span>;</div><div class="line">  <span class="comment">/*console.log(sName.match(reg))*/</span></div><div class="line">  <span class="keyword">var</span> res = sName.replace(reg,<span class="function"><span class="keyword">function</span> (<span class="params">match,s1,s2</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;match&#125;</span> <span class="subst">$&#123;s1&#125;</span> <span class="subst">$&#123;s2&#125;</span>`</span>)</div><div class="line">      <span class="keyword">return</span> s1[<span class="number">0</span>].toUpperCase()+s1.slice(<span class="number">1</span>)</div><div class="line">  &#125;)</div><div class="line">   <span class="keyword">return</span> res;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/12/newcoder-problems/" data-id="cjo8lzflj000e0sppms7twai2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/newcoder/">newcoder</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-dom节点查找" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/11/dom节点查找/" class="article-date">
+  <time datetime="2018-06-11T12:21:12.000Z" itemprop="datePublished">2018-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/11/dom节点查找/">dom节点查找</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>查找两个节点的最近的一个共同父节点，可以包括节点自身</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>jquery contains方法可以判断一个几个节点元素是否包含另一个节点元素<br>取任意一个节点1，依次往前取父节点，若这个父节点包含另外一个节点2，则此父节点则为满足要求的节点。<br>注意：节点本身是包含本身的即node1.contains(node1)为true<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">commonParentNode</span><span class="params">(oNode1, oNode2)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(;oNode1;oNode1 = oNode1.parentNode)&#123;</div><div class="line">        <span class="keyword">if</span>(oNode1.contains(oNode2))&#123;</div><div class="line">            <span class="keyword">return</span> oNode1</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/11/dom节点查找/" data-id="cjo8lzfl600070spp6itdas33" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Leetcode53-Maximum-Subarray" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/07/Leetcode53-Maximum-Subarray/" class="article-date">
+  <time datetime="2018-06-07T09:25:41.000Z" itemprop="datePublished">2018-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个整数数组，找到连续序列和最大的子序列（至少包括一个数字）<br>Example:<br>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> maxSubArray = function(nums) &#123;</div><div class="line">    <span class="built_in">var</span> cur = nums[<span class="number">0</span>];</div><div class="line">    <span class="built_in">var</span> <span class="built_in">sum</span> = nums[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="built_in">var</span> i = <span class="number">1</span>;i&lt;nums.<span class="built_in">length</span>;i++)&#123;</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span> + nums[i];</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span>&gt;nums[i]?<span class="built_in">sum</span>:nums[i];</div><div class="line">        cur = <span class="built_in">sum</span>&gt;cur?<span class="built_in">sum</span>:cur;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> cur;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="关键思路之Kadane-Algorithm（子序列可以为空）"><a href="#关键思路之Kadane-Algorithm（子序列可以为空）" class="headerlink" title="关键思路之Kadane Algorithm（子序列可以为空）"></a>关键思路之Kadane Algorithm（子序列可以为空）</h2><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//Kadane Algorithm</div><div class="line"><span class="built_in">var</span> maxSubArray = function(nums) &#123;</div><div class="line">    <span class="built_in">var</span> cur = <span class="number">0</span>;</div><div class="line">    <span class="built_in">var</span> <span class="built_in">sum</span> = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="built_in">var</span> i = <span class="number">0</span>;i&lt;nums.<span class="built_in">length</span>;i++)&#123;</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span> + nums[i];</div><div class="line">        <span class="built_in">sum</span> = <span class="built_in">sum</span>&gt;<span class="number">0</span>?<span class="built_in">sum</span>:<span class="number">0</span>;</div><div class="line">        cur = <span class="built_in">sum</span>&gt;cur?<span class="built_in">sum</span>:cur;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> cur;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>1.遍历数组，在遍历过程中，将遍历到的元素累加，当累加结果小于或等于0时，从下一个元素开始，重新开始累积<br>2.累加过程中，用一个变量记录cur当前最大值<br>3.一次遍历后,cur即为最大子片段的和值<br>注意：题目隐含设定是最大子片段可以为空，空片段的和值是0.<br>理解此算法的关键：<br>1.最大子片段中不可能包含求和值为负的前缀。因此当计算出一个负值时，要从当前值重新算起。<br>2.另一关键是所有出现过的最大值都会被记录</p>
+<h2 id="本题关键"><a href="#本题关键" class="headerlink" title="本题关键"></a>本题关键</h2><p>1.子序列至少包含一个元素，与Kadane Algorithm不同<br>2.最大值可能为负，因此sum初始值不为0，sum应与当前元素大小比较，而非0</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/07/Leetcode53-Maximum-Subarray/" data-id="cjo8lzfkm00000sppqd02tcqz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-url匹配及repalce方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/04/url匹配及repalce方法/" class="article-date">
+  <time datetime="2018-06-04T08:39:10.000Z" itemprop="datePublished">2018-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/04/url匹配及repalce方法/">url匹配及repalce方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>获取 url 中的参数</p>
+<ol>
+<li>指定参数名称，返回该参数的值 或者 空字符串</li>
+<li>不指定参数名称，返回全部的参数对象 或者 {}</li>
+<li>如果存在多个同名参数，则返回数组</li>
+</ol>
+<h2 id="我的解决方案"><a href="#我的解决方案" class="headerlink" title="我的解决方案"></a>我的解决方案</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">sUrl, sKey</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(sKey)&#123;</div><div class="line">        <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[?&amp;]"</span>+sKey+<span class="string">"=([^&amp;#])+"</span>,<span class="string">"g"</span>)<span class="comment">//[?&amp;]sKey=([^&amp;#]+)/g;</span></div><div class="line">        <span class="keyword">var</span> res = sUrl.match(reg);</div><div class="line">        <span class="built_in">console</span>.log(res)</div><div class="line">        <span class="keyword">if</span>(!res) <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        <span class="keyword">var</span> r = res.map(<span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(t)</div><div class="line">           <span class="keyword">return</span> (t.slice(t.indexOf(<span class="string">"="</span>)+<span class="number">1</span>))</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(r.length===<span class="number">1</span>) <span class="keyword">return</span> r[<span class="number">0</span>];</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> r;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[?&amp;]([^&amp;#=])+=([^&amp;#])+"</span>,<span class="string">"g"</span>)<span class="comment">//[?&amp;]sKey=([^&amp;#]+)/g;</span></div><div class="line">        <span class="keyword">var</span> res = sUrl.match(reg);</div><div class="line">        <span class="keyword">var</span> r = &#123;&#125;</div><div class="line">        res.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(t)</div><div class="line">            <span class="keyword">var</span> index = t.indexOf(<span class="string">"="</span>);</div><div class="line">            <span class="keyword">if</span>(r[t.slice(<span class="number">1</span>,index)])&#123;</div><div class="line">                <span class="keyword">var</span> temp = r[t.slice(<span class="number">1</span>,index)];</div><div class="line">                <span class="built_in">console</span>.log(temp)</div><div class="line">                <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(r[t.slice(<span class="number">1</span>,index)]))&#123;</div><div class="line">                    r[t.slice(<span class="number">1</span>,index)].push((t.slice(index+<span class="number">1</span>)))</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span>&#123;</div><div class="line">                    <span class="keyword">var</span> v = [temp,(t.slice(index+<span class="number">1</span>))]</div><div class="line">                    r[t.slice(<span class="number">1</span>,index)] = v;</div><div class="line">                &#125;</div><div class="line">                <span class="comment">//r[t.slice(1,index)] =  temp.split('').push(t.slice(index+1))</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                r[t.slice(<span class="number">1</span>,index)] =(t.slice(index+<span class="number">1</span>))</div><div class="line">        &#125;)</div><div class="line">        <span class="keyword">return</span> r;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>比较麻烦，讨论区有用到replace方法的，对此方法不太熟悉，因此先总结一下repalce用法</p>
+<h2 id="replace（）用法"><a href="#replace（）用法" class="headerlink" title="replace（）用法"></a>replace（）用法</h2><p>1.两个参数都是字符串，即普通意义上的替换<br>2.第一个参数是正则，第二个参数为字符串，则替换匹配到的字符串<br>3.第一个参数是正则，第二个参数是字符串包含捕获组,如$1，则是用捕获组替换匹配到的字符串<br>4.第一个参数是正则，第二个参数是函数，且第一个参数不包含子表达式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = <span class="string">'cat, bat, sat, fat'</span>;</div><div class="line"><span class="comment">// 使用/at/g 匹配字符串中所有的at，并将其替换为ond，</span></div><div class="line"><span class="comment">// 函数的参数分别为：当前匹配的字符，当前匹配字符的位置，原始字符串</span></div><div class="line"><span class="keyword">var</span> result = text.replace(<span class="regexp">/(at)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, pos, originalText</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(match + <span class="string">' '</span> + pos+originalText);</div><div class="line">    <span class="keyword">return</span> <span class="string">'ond'</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(result);</div><div class="line"><span class="comment">//at 1cat, bat, sat, fat</span></div><div class="line"><span class="comment">//at 6cat, bat, sat, fat</span></div><div class="line"><span class="comment">//at 11cat, bat, sat, fat</span></div><div class="line"><span class="comment">//at 16cat, bat, sat, fat</span></div><div class="line"><span class="comment">//cond, bond, sond, fond</span></div></pre></td></tr></table></figure></p>
+<p>5.第一个参数是正则，第二个参数是函数，且第一个参数包含子表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str5 = <span class="string">'这是一段原始文本，需要替换的内容"3=c这要替换4d"！'</span>;</div><div class="line"><span class="keyword">var</span> newStr = str5.replace( <span class="regexp">/([0-9])([a-z])/g</span>,<span class="function"><span class="keyword">function</span> (<span class="params">arg1,arg2,arg3,arg4,arg5</span>)</span>&#123;</div><div class="line"><span class="comment">// 当正则表达式中存在捕获组时，函数的参数一次为：模式匹配项，第一个捕获组的匹配项，第二个捕获组的匹配项...匹配项在字符串中的位置，原始字符串</span></div><div class="line">    <span class="built_in">console</span>.log( arg1 );</div><div class="line">    <span class="built_in">console</span>.log( arg2 );</div><div class="line">    <span class="built_in">console</span>.log( arg3 );</div><div class="line">    <span class="built_in">console</span>.log( arg4 );</div><div class="line">    <span class="built_in">console</span>.log( arg5 );</div><div class="line">&#125; );</div><div class="line"><span class="comment">/*3c</span></div><div class="line"><span class="comment">3</span></div><div class="line"><span class="comment">c</span></div><div class="line"><span class="comment">17</span></div><div class="line"><span class="comment">这是一段原始文本，需要替换的内容"3c这要替换4d"！</span></div><div class="line"><span class="comment">4d</span></div><div class="line"><span class="comment">4</span></div><div class="line"><span class="comment">d</span></div><div class="line"><span class="comment">23</span></div><div class="line"><span class="comment">这是一段原始文本，需要替换的内容"3c这要替换4d"！*/</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/06/04/url匹配及repalce方法/" data-id="cjo8lzflw000m0sppgf5t99er" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/30/Promise/" class="article-date">
+  <time datetime="2018-05-30T05:43:21.000Z" itemprop="datePublished">2018-05-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/30/Promise/">Promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p> MDN定义<br> 1 Promise对象用作异步计算<br> 2 一个Promise代表一个现在、将来或者永不可能可用的值<br> 3 可将异步操作队列化，使其按照期望的额顺序执行，并返回符合预期的结果<br> 4 可在对象直接传递和操作promise,帮助我们处理队列</p>
+<h2 id="Why-Promise"><a href="#Why-Promise" class="headerlink" title="Why Promise"></a>Why Promise</h2><p>异步操作常见语法<br> 1 事件侦听与响应 addEventListener<br> 2 回调 如ajax</p>
+<p>###<br> 1 回调地狱，调试不方便，不好维护<br> 2 无法使用 try catch错误处理机制 throw return<br> 3 无法正常检索堆栈信息，每一次回调都是在系统层面的调用<br> 4 多个回调函数之前难以建立联系</p>
+<h2 id="Promise详解"><a href="#Promise详解" class="headerlink" title="Promise详解"></a>Promise详解</h2><p>new Promise(function(resove,reject){<br>    //执行器函数<br>    //一段耗时很长的异步操作<br>    resolve();//数据处理完成<br>    reject();//数据处理出错<br>    //resolve reject会改变promise实例的状态，如果数据处理完成则调用then的第一个函数，出错则会调用then()的第二个响应函数<br>}).then(function(A){<br>    //成功 下一步<br>},function(){<br>    //失败<br>})</p>
+<p>Promise三个状态<br>pending 初始状态<br>fulfilled 成功<br>rejected 失败<br>promise状态发生改变就会触发then promise状态一经改变不会发生改变</p>
+<p>注意：如果在then中不直接返回promise实例对象，将会执行下一步操作，即使返回值为false，false将会作为返回值传递到相应的then函数中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"go!"</span>)</div><div class="line"></div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      resolve(<span class="string">'hello'</span>)</div><div class="line">&#125;,<span class="number">2000</span>)</div><div class="line">&#125;)</div><div class="line">.then(<span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">   (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">        resolve(<span class="string">'world'</span>)</div><div class="line">           <span class="built_in">console</span>.log(<span class="string">"merrry"</span>)</div><div class="line">    &#125;,<span class="number">2000</span>)</div><div class="line">    &#125;)</div><div class="line">    &#125;());</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="params">a</span>=&gt;</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a+<span class="string">"yes"</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">//go!</span></div><div class="line"><span class="comment">//hello</span></div><div class="line"><span class="comment">//falseyes</span></div><div class="line"><span class="comment">//merrry 间隔2s</span></div></pre></td></tr></table></figure></p>
+<h2 id="then"><a href="#then" class="headerlink" title="then()"></a>then()</h2><p>接收两个函数作为参数分别代表 fulfilled rejected<br>then()可以返回一个新的promise实例，所以可以链式调用<br>当前面的promise状态改变时，then()根据其最终状，选择响应函数执行。</p>
+<p>状态响应函数可以返回新的promise或者其他值<br>如果返回新的promise 那么下一级.then()会在新的promise状态改变之后执行<br>如果返回其他任何值，则会立即执行下一级then()</p>
+<p>then()里面有then(),则外面的then会等里面的then()全部执行完才执行<br>then()如果参数不符合规范则会被忽略，执行后面的步骤</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>promise会自动捕获内部异常，并交给reject执行</p>
+<p>两种方法：<br>1 reject(‘error’) .then(null,message=&gt;{})<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</div><div class="line">    reject(<span class="string">'errr'</span>)</div><div class="line">&#125;)</div><div class="line">.then(<span class="literal">null</span>,<span class="function"><span class="params">message</span>=&gt;</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(message)</div><div class="line">&#125;)</div></pre></td></tr></table></figure><br>2 throw new Error(‘error’) .catch(message=&gt;{})</p>
+<p>catch()也会产生一个promise实例<br>catch()可以与then()连用<br>建议在最后都加一个catch操作以便处理错误。</p>
+<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><p>接收一个数组，返回一个新的promise，数组里可以是promise对象，也可以是别的值，只有promise会等待状态改变<br>当所有子promise都完成，返回值是全部promise返回值的组成的数组<br>当有任何一个结果失败，则该promise失败，返回值是第一个失败的子promise的结果</p>
+<h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h2><p>接收一个数组，当任一个promise完成则状态改变</p>
+<h3 id="Promise一旦创建立刻执行"><a href="#Promise一旦创建立刻执行" class="headerlink" title="Promise一旦创建立刻执行"></a>Promise一旦创建立刻执行</h3><h2 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a>Promise.resolve()</h2><p>1 参数为空，返回一个状态为fulfilled的promise实例<br>2 参数是一个跟promise无关的值，则同上，但是fulfilled函数为接收到这个参数<br>3 若参数为promise实例，则返回该实例，不做任何修改。<br>4 若参数为thenable则立即执行</p>
+<h2 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject"></a>Promise.reject</h2><p>类似Promise.resolve返回一个状态为rejected的promise实例</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/30/Promise/" data-id="cjo8lzfkz00040sppr5rzlej7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-canvas性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/canvas性能优化/" class="article-date">
+  <time datetime="2018-05-29T02:37:54.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/canvas性能优化/">canvas性能优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.将渲染阶段的开销转嫁到计算阶段之上<br>2.使用多个分层的canvas绘制复杂场景<br>3.避免频繁设置绘制上下文的font属性 如linewidth等，调整绘制顺序，linewidth一致的放在一起绘制.<br>因为设置linewidth,font,shadow,text,fillstyle这些属性花费的时间较多<br>4.不在动画中使用putImageData方法。这种操作导致性能下降<br>5.通过计算和判断，避免视野之外元素的绘制。<br>6.离屏绘制。将固定的内容预先绘制在离屏canvas上以提高性能。例如，将待绘制的内容先裁剪好，保存起来。<br>先将对象绘制在一个未插入页面的canvas中，然后每一帧使用这个canvas绘制。<br>7.使用worker和拆分任务的方法避免复杂算法阻塞动画运行。避免渲染一帧的时间超过16ms</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="cjo8lzfl700080spp9key4dmw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-canvas宽高" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/canvas宽高/" class="article-date">
+  <time datetime="2018-05-29T01:10:04.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/canvas宽高/">canvas宽高</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于HTML5中Canvas的宽、高设置问题<br>Canvas 是一个画板和一张画纸，画板相当于一个容器，画图/作业是在画纸上进行的，<br>画板和画纸的默认宽高是300*150，当画纸与画板宽高相等时，图像不会被拉伸，当画纸与画板宽高不一样时，图像就会被拉伸（变形）。<br>1， width 和 height 属性是设定画板和画纸的宽高，</p>
+<p>如： width=”300” height=”300” 即画板的宽高是300<em>300，画纸的宽高也是300</em>300，作业的300<em>300 的对角线图像就不会被拉伸<br>2， style样式 里设定的是仅画板的宽高，画纸的宽高还是为默认值300</em>150，<br>Canvas元素默认宽 300px, 高 150px, 设置其宽高可以使用如下方法(不会被拉伸)：<br>方法一：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;canvas <span class="attribute">width</span>=<span class="string">"500"</span> <span class="attribute">height</span>=<span class="string">"500"</span>&gt;&lt;/canvas&gt;</div></pre></td></tr></table></figure><br>方法二：使用HTML5 Canvas API操作 OK<br>       var canvas = document.getElementById(‘欲操作canvas的id’);<br>       canvas.width = 500;<br>       canvas.width = 500;<br>若通过如下方法设置宽高，那么Canvas元素将由原来大小被拉伸到所设置的宽高：<br>方法一：使用CSS 会被拉伸</p>
+<pre><code>#欲操作canvas的id｛
+     width:1000px;
+     height:1000px;
+｝
+</code></pre><p>方法二：使用HTML5 Canvas API操作 会被拉伸<br>      var canvas = document.getElementById(‘欲操作canvas的id’);<br>      canvas.style.width = “1000px”;<br>      canvas.style.height = “1000px”;<br>方法三 ：用jquery的$(“#id”).width(500);会被拉伸<br>其它：canvas的width和height也不能用百分比表示。canvas会将百分值当成数值显示</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="cjo8lzfl400060sppaipztpkk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flex-应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/10/flex-应用/" class="article-date">
+  <time datetime="2018-05-10T06:25:10.000Z" itemprop="datePublished">2018-05-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/10/flex-应用/">flex 应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天面试问到flex布局实现1-9骰子的排布，所以来总结一下。</p>
+<h2 id="数字一"><a href="#数字一" class="headerlink" title="数字一"></a>数字一</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#container&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#ffcc99</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">display</span>: flex;</div><div class="line">            <span class="attribute">align-items</span>: center;</div><div class="line">            <span class="attribute">justify-content</span>: center;</div><div class="line">        &#125;</div><div class="line">#item1&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">width</span>:<span class="number">40px</span>;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">2.5px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">background-color</span>: black;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="selector-tag">div</span> id=<span class="string">"container"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> id=<span class="string">"item1"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h2 id="数字二"><a href="#数字二" class="headerlink" title="数字二"></a>数字二</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> #two&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#ffcc99</span>;</div><div class="line">            <span class="attribute">margin-top</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">display</span>: flex;</div><div class="line">            <span class="attribute">flex-direction</span>: column;</div><div class="line">            <span class="attribute">align-items</span>: center;</div><div class="line">            <span class="attribute">justify-content</span>: space-between;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"> <span class="selector-id">#two-item1</span>,#two-item2&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">background-color</span>: black;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">5px</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="selector-tag">div</span> id = <span class="string">"two"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> id=<span class="string">"two-item1"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> id=<span class="string">"two-item2"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>注意 以下代码都基于这两个类<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">150px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#ffcc99</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">            <span class="attribute">margin-top</span>: <span class="number">5px</span>;</div><div class="line">        &#125;</div><div class="line"> <span class="selector-class">.item</span>&#123;</div><div class="line">            <span class="attribute">height</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">width</span>: <span class="number">40px</span>;</div><div class="line">            <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">background-color</span>: black;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">5px</span>;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#three&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#three-item2&#123;</span></div><div class="line">          align-self: center;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#three-item3&#123;</span></div><div class="line">            align-self: flex-<span class="keyword">end</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three"</span> <span class="built_in">class</span>=<span class="string">"container"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three-item1"</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three-item2"</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"three-item3"</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#four&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">between</span>;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#four-line1,#four-line2&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">between</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"four"</span> <span class="built_in">class</span>=<span class="string">"container"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"four-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item1"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item2"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"four-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item3"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span> <span class="built_in">id</span>=<span class="string">"four-item4"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line"></div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="五"><a href="#五" class="headerlink" title="五"></a>五</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#five&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#five-line1,#five-line3&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">between</span>;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#five-line2&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: center;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"five"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="六"><a href="#六" class="headerlink" title="六"></a>六</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#six&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#six-line1,#six-line2,#six-line3&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">around</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"six"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="九"><a href="#九" class="headerlink" title="九"></a>九</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#nine&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"nine"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div><div class="line"></div></pre></td></tr></table></figure>
+<p>结果如图所示<br><img src="../img/demo.jpg" alt="avatar"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="cjo8lzfld000a0sppf7cuohsl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love-coding/">love coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newcoder/">newcoder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/love-coding/" style="font-size: 10px;">love coding</a> <a href="/tags/newcoder/" style="font-size: 10px;">newcoder</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/01/Object-defineProperty/">Object.defineProperty及seal freeze相关函数总结</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/12/newcoder-problems/">newcoder problems</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/11/dom节点查找/">dom节点查找</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/07/Leetcode53-Maximum-Subarray/">Leetcode53 Maximum Subarray</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
