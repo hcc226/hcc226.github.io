@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="hcc226">
 <meta property="og:description" content="先来看两段代码第一段，使用methods方法来计算返回值第二段代码，使用计算属性computed返回值二者使用上的区别是使用methods需要调用now()和后者直接使用now效果上 使用methods每秒页面的时间会进行更新，而后者不会，一直保持初始值，刷新页面后时间才会改变那么computed与methods究竟有什么区别呢？ computed适用情景我们先来看看computed的使用情景 对">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://hcc226.github.io/2018/06/14/img/method.jpg">
-<meta property="og:image" content="https://hcc226.github.io/2018/06/14/img/computed.jpg">
+<meta property="og:image" content="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/img/method.jpg">
+<meta property="og:image" content="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/img/computed.jpg">
 <meta property="og:updated_time" content="2018-06-14T13:20:25.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue.js中计算属性computed与methods的区别">
 <meta name="twitter:description" content="先来看两段代码第一段，使用methods方法来计算返回值第二段代码，使用计算属性computed返回值二者使用上的区别是使用methods需要调用now()和后者直接使用now效果上 使用methods每秒页面的时间会进行更新，而后者不会，一直保持初始值，刷新页面后时间才会改变那么computed与methods究竟有什么区别呢？ computed适用情景我们先来看看computed的使用情景 对">
-<meta name="twitter:image" content="https://hcc226.github.io/2018/06/14/img/method.jpg">
+<meta name="twitter:image" content="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/img/method.jpg">
   
     <link rel="alternate" href="/atom.xml" title="hcc226" type="application/atom+xml">
   
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>先来看两段代码<br>第一段，使用methods方法来计算返回值<br><img src="../img/method.jpg" alt="avatar"><br>第二段代码，使用计算属性computed返回值<br><img src="../img/computed.jpg" alt="avatar"><br>二者使用上的区别是使用methods需要调用now()和后者直接使用now<br>效果上 使用methods每秒页面的时间会进行更新，而后者不会，一直保持初始值，刷新页面后时间才会改变<br>那么computed与methods究竟有什么区别呢？</p>
+        <p>先来看两段代码<br>第一段，使用methods方法来计算返回值<br><img src="img/method.jpg" alt="avatar"><br>第二段代码，使用计算属性computed返回值<br><img src="img/computed.jpg" alt="avatar"><br>二者使用上的区别是使用methods需要调用now()和后者直接使用now<br>效果上 使用methods每秒页面的时间会进行更新，而后者不会，一直保持初始值，刷新页面后时间才会改变<br>那么computed与methods究竟有什么区别呢？</p>
 <h2 id="computed适用情景"><a href="#computed适用情景" class="headerlink" title="computed适用情景"></a>computed适用情景</h2><p>我们先来看看computed的使用情景</p>
 <h3 id="对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed"><a href="#对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed" class="headerlink" title="对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed"></a>对绑定数据进行处理，如果使用在html中使用表达式返回结果的话，当计算过程较为复杂时不能满足需求，基于使用computed，当绑定数据更新时，会调用computed</h3><h3 id="计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行"><a href="#计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行" class="headerlink" title="计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行"></a>计算属性还可以依赖多个Vue的数据，其中有一个数据发生变化，计算属性便会重新执行</h3><h3 id="计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。"><a href="#计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。" class="headerlink" title="计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。"></a>计算属性是依赖缓存的。当计算属性所依赖的数据发生变化时，它才会重新取值。</h3><p>Date.now()不是响应式依赖，所以不会更新</p>
 <p>而对于methods来说，它不依赖缓存，只要重新渲染，他就会被调用，因此函数也会被执行。</p>
@@ -99,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="clm14b62s000ks69jk6bakefp" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/06/14/vue-js中计算属性computed与methods的区别/" data-id="clm2085n3000k1u9jniiql8t4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -173,6 +173,10 @@
       <ul>
         
           <li>
+            <a href="/2023/09/01/my-work-1/">my-work-1</a>
+          </li>
+        
+          <li>
             <a href="/2023/09/01/mobile-pages-that-I-have-worked-on/">Mobile pages that I have worked on</a>
           </li>
         
@@ -186,10 +190,6 @@
         
           <li>
             <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/12/newcoder-problems/">newcoder problems</a>
           </li>
         
       </ul>
