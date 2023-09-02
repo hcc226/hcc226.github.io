@@ -65,43 +65,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-canvas性能优化" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/29/canvas性能优化/" class="article-date">
-  <time datetime="2018-05-29T14:37:54.000Z" itemprop="datePublished">2018-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/29/canvas性能优化/">canvas性能优化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.将渲染阶段的开销转嫁到计算阶段之上<br>2.使用多个分层的canvas绘制复杂场景<br>3.避免频繁设置绘制上下文的font属性 如linewidth等，调整绘制顺序，linewidth一致的放在一起绘制.<br>因为设置linewidth,font,shadow,text,fillstyle这些属性花费的时间较多<br>4.不在动画中使用putImageData方法。这种操作导致性能下降<br>5.通过计算和判断，避免视野之外元素的绘制。<br>6.离屏绘制。将固定的内容预先绘制在离屏canvas上以提高性能。例如，将待绘制的内容先裁剪好，保存起来。<br>先将对象绘制在一个未插入页面的canvas中，然后每一帧使用这个canvas绘制。<br>7.使用worker和拆分任务的方法避免复杂算法阻塞动画运行。避免渲染一帧的时间超过16ms</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas性能优化/" data-id="clm2085my000a1u9jkhp388jl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-canvas宽高" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/29/canvas宽高/" class="article-date">
@@ -135,7 +98,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="clm2085mw00091u9jnx9i4lqr" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/29/canvas宽高/" data-id="clm20o0x90006939jg3qvqg78" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,12 +139,12 @@
 <h2 id="五"><a href="#五" class="headerlink" title="五"></a>五</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#five&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#five-line1,#five-line3&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">between</span>;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#five-line2&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: center;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"five"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"five-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
 <h2 id="六"><a href="#六" class="headerlink" title="六"></a>六</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#six&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: column;</div><div class="line">        &#125;</div><div class="line"> <span class="comment">#six-line1,#six-line2,#six-line3&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">            justify-content: <span class="literal">space</span>-<span class="keyword">around</span>;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"six"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"six-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
 <h2 id="九"><a href="#九" class="headerlink" title="九"></a>九</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">#nine&#123;</span></div><div class="line">            display: flex;</div><div class="line">            flex-direction: row;</div><div class="line">        &#125;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span> <span class="built_in">id</span>=<span class="string">"nine"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line1"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line2"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"nine-line3"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div><div class="line"></div></pre></td></tr></table></figure>
-<p>结果如图所示<br><img src="demo.jpg" alt="avatar"></p>
+<p>结果如图所示<br><img src="/images/demo.jpg" alt="demo"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="clm2085n2000i1u9jh3nowoo4" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/10/flex-应用/" data-id="clm20o0xm000n939j1xbv22lm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -226,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="clm2085n3000l1u9jk4yqenif" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/05/02/vue-component-communication/" data-id="clm20o0xl000j939jyxvyoq1b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -272,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="clm2085mp00031u9j96wdz4p5" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/28/You-don-t-know-javascript-1/" data-id="clm20o0x80005939janrtqwit" class="article-share-link">Share</a>
       
       
     </footer>
@@ -314,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="clm2085ml00011u9ji5doel7y" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/26/RegExp/" data-id="clm20o0x70004939jdkvbeaax" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="clm2085mz000b1u9jvynu6iaf" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/25/flex/" data-id="clm20o0xd000b939j61ph6hbj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -392,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="clm2085ms00071u9jk1bac51d" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/base10/" data-id="clm20o0xa0007939j59cxduxe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="clm2085mf00001u9j2ayx4umu" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2018/04/03/Judge-the-nth-bite-of-a-num/" data-id="clm20o0wy0000939j6kdvs2vb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -469,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="clm2085n2000h1u9jqo2m0uvd" class="article-share-link">Share</a>
+      <a data-url="https://hcc226.github.io/2017/11/02/hello/" data-id="clm20o0xi000f939jf7fb2h2j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/love-coding/">love coding</a></li></ul>
@@ -529,10 +492,6 @@
       <ul>
         
           <li>
-            <a href="/2023/09/01/my-work-1/">my-work-1</a>
-          </li>
-        
-          <li>
             <a href="/2023/09/01/mobile-pages-that-I-have-worked-on/">Mobile pages that I have worked on</a>
           </li>
         
@@ -546,6 +505,10 @@
         
           <li>
             <a href="/2018/06/14/vue-js中计算属性computed与methods的区别/">vue.js中计算属性computed与methods的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/12/newcoder-problems/">newcoder problems</a>
           </li>
         
       </ul>
